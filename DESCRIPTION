@@ -1,7 +1,7 @@
 Package: vasp
 Type: Package
 Title: Quantification and Visulization of Variations of Splicing in Population  
-Version: 0.99.9
+Version: 0.99.10
 Author: Huihui Yu, Qian Du, Chi Zhang
 Maintainer: Huihui Yu <yuhuihui2011@foxmail.com>
 Description: Discovery of genome-wide variable alternative splicing events from 
