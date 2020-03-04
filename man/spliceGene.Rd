@@ -51,16 +51,16 @@ data(rice.bg)
 rice.bg
 head(geneIDs(rice.bg))
 
-score <- spliceGene(rice.bg, "MSTRG.183", junc.type = "score")
-count <- spliceGene(rice.bg, "MSTRG.183", junc.type = "count")
+score<-spliceGene(rice.bg,'MSTRG.183',junc.type='score')
+count<-spliceGene(rice.bg,'MSTRG.183',junc.type='count')
 
 ## compare
 tail(score)
 tail(count)
 
 ## get intron structrue
-intron <- structure(rice.bg)$intron
-intron[intron$id \%in\% rownames(score)]
+intron<-structure(rice.bg)$intron
+intron[intron$id\%in\%rownames(score)]
 }
 \seealso{
 \code{\link{spliceGenome}}, which calculates splicing scores in

@@ -21,6 +21,7 @@
 #' @details score = junction count/gene-level per base read coverage.
 #' Row functions for matrices in \code{\link{matrixStats}} package are useful
 #' to select genes and introns.
+#' @import GenomicRanges
 #' @export spliceGenome
 #' @seealso \code{\link{spliceGene}}, which calculates splicing scores in one
 #' gene.

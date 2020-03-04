@@ -4,7 +4,20 @@
 ## 1. Introduction
 ---------------
 
-**VaSP** is an R package for discovery of genome-wide variable splicing events from short-read RNA-seq data. Based on R package [Ballgown](https://github.com/alyssafrazee/ballgown), VaSP calculates Single Splicing Strength (3S) score of any intron by the junction count normalized by the gene-level average read coverage (score=junction count/gene-level average read coverage). The 3S scores can be used for further analysis, such as differential splicing analysis between two sample groups and sQTL (splicing Quantitative Trait Locus) identification in a large population. The VaSP package provides a function to find large-effect differential splicing events without the need of genotypic information in an inbred plant population, so called genotype-specific splicing (GSS). Integrated with functions from R package [Sushi](https://github.com/dphansti/Sushi), VaSP package also provides function to visualization of gene splicing information for publication-quality multi-panel figures.
+**VaSP** is an R package for discovery of genome-wide variable splicing events 
+from short-read RNA-seq data. Based on R package 
+[Ballgown](https://github.com/alyssafrazee/ballgown), VaSP calculates Single S
+plicing Strength (3S) score of any intron by the junction count normalized by 
+the gene-level average read coverage (score=junction count/gene-level average 
+read coverage). The 3S scores can be used for further analysis, such as 
+differential splicing analysis between two sample groups and sQTL (splicing 
+Quantitative Trait Locus) identification in a large population. The VaSP 
+package provides a function to find large-effect differential splicing events 
+without the need of genotypic information in an inbred plant population, so 
+called genotype-specific splicing (GSS). Integrated with functions from R 
+package [Sushi](https://github.com/dphansti/Sushi), VaSP package also provides 
+function to visualization of gene splicing information for publication-quality 
+multi-panel figures.
 
 ## 2. Installation
 ---------------

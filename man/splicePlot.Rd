@@ -79,12 +79,12 @@ a gene region. This function is a wrapper of \code{\link{getDepth}},
 data(rice.bg)
 rice.bg
 
-samples <- paste("Sample", c("027", "102", "237"), sep = "_")
-bam.dir <- system.file("extdata", package = "vasp")
+samples <- paste('Sample', c('027','102','237'),sep='_')
+bam.dir <- system.file('extdata',package = 'vasp')
 
 ## plot the whole gene region
-splicePlot(rice.bg, samples, bam.dir, gene = "MSTRG.183", bheight = 0.2)
+splicePlot(rice.bg,samples,bam.dir,gene='MSTRG.183',bheight=0.2)
 
 ## plot the alternative splicing region
-splicePlot(rice.bg, samples, bam.dir, gene = "MSTRG.183", start = 1179000)
+splicePlot(rice.bg,samples,bam.dir,gene='MSTRG.183',start=1179000)
 }

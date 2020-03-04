@@ -8,7 +8,7 @@
 #' @param end end position
 #' @return  a data.frame in bedgraph file format which can be used as input for
 #' \code{\link[Sushi]{plotBedgraph}} in the \bold{SuShi} package.
-#' @import Rsamtools, GenomicAlignments
+#' @import Rsamtools
 #' @export getDepth
 #' @seealso \code{\link{splicePlot}}
 #' @examples

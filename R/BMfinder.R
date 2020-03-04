@@ -17,6 +17,7 @@
 #' @return a matrix with feature rows and sample columns.
 #' @details The matrix contains 1, 2 and NA, and
 #' values of 'x' in group 2 are larger than group 1.
+#' @import parallel
 #' @export BMfinder
 #' @examples
 #' data(rice.bg)
@@ -40,7 +41,7 @@ BMfinder<-function(x,p.value=0.01,maf=0.05,miss=0.05,
         warning('sample size < 30, the result should be further tested!')
     }
     cat("---BMfinder:", nrow(x), "features *", ncol(x),"samples\n")
-    res<-parallel::mclapply(seq_len(nrow(x)),function(i) {
+    res<-mclapply(seq_len(nrow(x)),function(i) {
         R <- x[i, ]
         if (all(R==R[1],na.rm=TRUE)) return(rep(NA,length(ind)))
         na.id<-which(is.na(R))

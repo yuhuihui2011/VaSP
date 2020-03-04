@@ -44,7 +44,7 @@ to select genes and introns.
 data(rice.bg)
 rice.bg
 
-splice <- spliceGenome(rice.bg, gene.select = NA, intron.select = NA)
+splice<-spliceGenome(rice.bg,gene.select=NA,intron.select=NA)
 names(splice)
 
 head(splice$score)

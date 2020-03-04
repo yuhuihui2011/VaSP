@@ -23,17 +23,18 @@ a data.frame in bedgraph file format which can be used as input for
 Get read depth from a BAM file (in bedgraph format)
 }
 \examples{
-path <- system.file("extdata", package = "vasp")
-bam_files <- list.files(path, "bam$")
+path <- system.file('extdata',package='vasp')
+bam_files<-list.files(path,'bam$')
 bam_files
 
-depth <- getDepth(file.path(path, bam_files[1]), "Chr1", start = 1171800, end = 1179400)
+depth<-getDepth(file.path(path, bam_files[1]), 'Chr1',
+                start=1171800, end=1179400)
 head(depth)
 
 library(Sushi)
-plotBedgraph(depth, "Chr1", chromstart = 1171800, chromend = 1179400, yaxt = "s")
-mtext("Depth", side = 2, line = 2.5, cex = 1.2, font = 2)
-labelgenome("Chr1", 1171800, 1179400, side = 1, scipen = 20, n = 5, scale = "Kb")
+plotBedgraph(depth,'Chr1',chromstart=1171800, chromend=1179400,yaxt='s')
+mtext('Depth',side=2,line=2.5,cex=1.2,font=2)
+labelgenome('Chr1',1171800,1179400,side=1,scipen=20,n=5,scale="Kb")
 }
 \seealso{
 \code{\link{splicePlot}}

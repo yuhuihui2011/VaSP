@@ -46,11 +46,11 @@ values of 'x' in group 2 are larger than group 1.
 }
 \examples{
 data(rice.bg)
-score <- spliceGene(rice.bg, "MSTRG.183", junc.type = "score")
-score <- round(score, 2)
-as <- BMfinder(score, cores = 1)  # 4 bimodal distrubition features found
+score<-spliceGene(rice.bg,'MSTRG.183',junc.type='score')
+score<-round(score,2)
+as<-BMfinder(score,cores=1) # 4 bimodal distrubition features found
 
-## compare
+##compare
 as
-score[rownames(score) \%in\% rownames(as), ]
+score[rownames(score)\%in\%rownames(as),]
 }
