@@ -31,7 +31,7 @@ splicing score matrix from \code{\link{spliceGenome}} or
 are log2 tranformed before k-means clustering: x = log2(x+1).}
 
 \item{cores}{threads to be used. This value is passed
-to \code{\link[parallel]{mclapply}} in \bold{parallel} package}
+to \code{\link{parallel::mclapply}} in \bold{parallel} package}
 }
 \value{
 a matrix with feature rows and sample columns.
