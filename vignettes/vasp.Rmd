@@ -1,7 +1,5 @@
 ---
-title: |
-  | **VaSP/vasp**: Quantification and Visulization of
-  | **Va**riations of **S**plicing in **P**opulation
+title: "VaSP/vasp: Quantification and Visulization of <u>Va</u>riations of <u>S</u>plicing in <u>P</u>opulation"
 author: "*Huihui Yu, Qian Du and Chi Zhang*"
 date: "2020-03-03"
 output: html_document
