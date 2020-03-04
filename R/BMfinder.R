@@ -13,7 +13,7 @@
 #' @param log whether the scores are to be logarithmic. If TRUE, all the scores
 #' are log2 tranformed before k-means clustering: x = log2(x+1).
 #' @param cores threads to be used. This value is passed
-#'  to \code{\link[parallel]{mclapply}} in \bold{parallel} package
+#'  to \bold{?mclapply} in \bold{parallel} package
 #' @return a matrix with feature rows and sample columns.
 #' @details The matrix contains 1, 2 and NA, and
 #' values of 'x' in group 2 are larger than group 1.

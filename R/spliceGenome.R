@@ -16,7 +16,7 @@
 #' supporting.
 #' @return  a list of two elelments: "score' is matrix of intron splicing scores
 #' with intron rows and sample columns and "intron" is a
-#' \code{\link[GenomicRanges]{GRanges}} object of intron structure.
+#' \code{\link[=GenomicRanges-class]{GRanges}} object of intron structure.
 #' See \code{\link[ballgown]{structure}} in \bold{ballgown} package
 #' @details score = junction count/gene-level per base read coverage.
 #' Row functions for matrices in \code{\link{matrixStats}} package are useful
