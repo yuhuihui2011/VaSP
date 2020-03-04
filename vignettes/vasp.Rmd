@@ -4,7 +4,7 @@ title: |
   | **Va**riations of **S**plicing in **P**opulation
 author: "*Huihui Yu, Qian Du and Chi Zhang*"
 date: "2020-03-03"
-output: pdf_document
+output: html_document
 vignette: >
   %\VignetteIndexEntry{vasp}
   %\VignetteEngine{knitr::rmarkdown}
