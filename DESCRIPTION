@@ -8,7 +8,7 @@ Description: Discovery of genome-wide variable alternative splicing events from
   short-read RNA-seq data and visualizations of gene splicing information for 
   publication-quality multi-panel figures. 
 License: GPL (>= 2.0)
-Depends: R (>= 3.4.0), ballgown
+Depends: R (>= 4.0), ballgown
 Imports: IRanges, GenomicRanges, GenomeInfoDb, S4Vectors, Sushi, parallel, 
   matrixStats, GenomicAlignments, Rsamtools, cluster, stats, graphics, methods
 Suggests: knitr, rmarkdown
