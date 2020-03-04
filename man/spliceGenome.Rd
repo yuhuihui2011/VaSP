@@ -29,7 +29,7 @@ supporting.}
 \value{
 a list of two elelments: "score' is matrix of intron splicing scores
 with intron rows and sample columns and "intron" is a
-\code{\link[GenomicRanges]{GRanges}} object of intron structure.
+\code{\link{GenomicRanges::GRanges}} object of intron structure.
 See \code{\link[ballgown]{structure}} in \bold{ballgown} package
 }
 \description{
