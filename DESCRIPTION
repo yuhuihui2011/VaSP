@@ -12,7 +12,7 @@ BugReports: https://github.com/yuhuihui2011/vasp/issues
 License: GPL (>= 2.0)
 Depends: R (>= 4.0), ballgown
 Imports: IRanges, GenomicRanges, S4Vectors, Sushi, parallel, matrixStats, 
-    GenomeInfoDb, Rsamtools, cluster, stats, graphics, methods
+    GenomicAlignments, GenomeInfoDb, Rsamtools, cluster, stats, graphics, methods
 Suggests: knitr, rmarkdown
 VignetteBuilder: knitr
 biocViews: RNASeq, AlternativeSplicing, DifferentialSplicing, StatisticalMethod,
