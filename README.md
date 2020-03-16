@@ -1,8 +1,11 @@
 # vasp
 Quantification and Visulization of Variations of Splicing in Population
+
+
+
 ## Introduction
 
-**VaSP** is an R package for discovery of genome-wide variable splicing events from short-read RNA-seq data. Based on R package [Ballgown](https://github.com/alyssafrazee/ballgown), VaSP calculates Single Splicing Strength (3S) score of any intron by the junction count normalized by the gene-level average read coverage (score=junction count/gene-level average read coverage). The 3S scores can be used for further analysis, such as differential splicing analysis between two sample groups and sQTL (splicing Quantitative Trait Locus) identification in a large population. The VaSP package provides a function to find large-effect differential splicing events without the need of genotypic information in an inbred plant population, so called genotype-specific splicing (GSS). Integrated with functions from R package [Sushi](https://github.com/dphansti/Sushi), VaSP package also provides function to visualization of gene splicing information for publication-quality multi-panel figures.
+**VaSP** is an R package for the discovery of genome-wide variable splicing events from short-read RNA-seq data. Based on R package [Ballgown](https://github.com/alyssafrazee/ballgown), VaSP calculates the Single Splicing Strength (3S) score of an intron by the junction count normalized by the gene-level average read coverage (score=junction count/gene-level average read coverage). The 3S scores can be used for further analysis, such as differential splicing analysis between two sample groups and sQTL (splicing Quantitative Trait Locus) identification in a large population. The VaSP package provides a function to find large-effect differential splicing events without the need of genotypic information in an inbred plant population, so-called genotype-specific splicing (GSS). Integrated with functions from R package [Sushi](https://github.com/dphansti/Sushi), VaSP package also provides a function to visualize gene splicing information for publication-quality multi-panel figures.
 
 ## Installation
 
@@ -15,7 +18,7 @@ BiocManager::install("vasp")
 
 ## Data input
 
-Users need to follow the manual of R package Ballgown (<https://github.com/alyssafrazee/ballgown>) to creat a ballgown object as an input for the VaSP package. See `?ballgown` for detailed information on creating Ballgown objects. The object can be stored in a `.RDate` file by `save()` .
+Users need to follow the manual of R package Ballgown (<https://github.com/alyssafrazee/ballgown>) to creat a ballgown object as an input for the VaSP package. See `?ballgown` for detailed information on creating Ballgown objects. The object can be stored in a `.RDate` file by `save()` . Here is an example of constructing rice.bg object from HISAT2+StringTie output
 
 ```{r,eval=FALSE}
 library(vasp)
@@ -95,7 +98,7 @@ Calculate 3S (Single Splicing Strength) scores, find GSS (genotype-specific spli
     splicePlot(rice.bg,gene='MSTRG.183',samples = sampleNames(rice.bg)[c(1,3,5)],
                start = 1179000, end = 1179300)
     #> [1] "yes"
-![](https://github.com/yuhuihui2011/vasp/blob/master/figure/splicePlot-1.png)
+![](https://github.com/yuhuihui2011/vasp/blob/master/README_files/splicePlot-1.png)
 
 ## Features
 

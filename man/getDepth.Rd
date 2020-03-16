@@ -34,7 +34,7 @@ head(depth)
 library(Sushi)
 plotBedgraph(depth,'Chr1',chromstart=1171800, chromend=1179400,yaxt='s')
 mtext('Depth',side=2,line=2.5,cex=1.2,font=2)
-labelgenome('Chr1',1171800,1179400,side=1,scipen=20,n=5,scale="Kb")
+labelgenome('Chr1',1171800,1179400,side=1,scipen=20,n=5,scale='Kb')
 }
 \seealso{
 \code{\link{splicePlot}}

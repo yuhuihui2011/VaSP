@@ -4,31 +4,28 @@
 \alias{spliceGenome}
 \title{Calculate Genome-wide Splicing Scores}
 \usage{
-spliceGenome(
-  bg,
-  gene.select = "rowQuantiles(x,probs = 0.05)>=1",
-  intron.select = "rowQuantiles(x,probs = 0.95)>=5"
-)
+spliceGenome(bg, gene.select = "rowQuantiles(x,probs = 0.05)>=1",
+    intron.select = "rowQuantiles(x,probs = 0.95)>=5")
 }
 \arguments{
 \item{bg}{ballgown object}
 
 \item{gene.select}{logical expression-like string, indicating genes to select
 from a matrix of gene-level coverages: NA value keeps all genes.
-e.g. gene.select = "rowQuantiles(x,probs = 0.05)>=1" keeps the genes with the
+e.g. gene.select = 'rowQuantiles(x,probs = 0.05)>=1' keeps the genes with the
 read coverage greater than or equal to 1 in at least 95% of the samples
 (0.05 quantile). Used to filter low expressed genes.}
 
 \item{intron.select}{logical expression-like string, indicating introns to
 select from a matrix of junction counts: NA value keeps all introns.
-e.g. intron.select = "rowQuantiles(x,probs = 0.95)>=5" keeps the introns
+e.g. intron.select = 'rowQuantiles(x,probs = 0.95)>=5' keeps the introns
 with the read count greater than or euqal to 5 in at least 5% of the samples
 (0.95 quantile). Used to filter introns with very few junction reads
 supporting.}
 }
 \value{
-a list of two elelments: "score' is matrix of intron splicing scores
-with intron rows and sample columns and "intron" is a
+a list of two elelments: 'score' is matrix of intron splicing scores
+with intron rows and sample columns and 'intron' is a
 \code{\link[=GenomicRanges-class]{GRanges}} object of intron structure.
 See \code{\link[ballgown]{structure}} in \bold{ballgown} package
 }

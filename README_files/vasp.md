@@ -1,23 +1,35 @@
 # vasp/VaSP: Quantification and Visulization of <br>Variations of Splicing in Population
 *by [Huihui Yu](https://github.com/yuhuihui2011), [Qian Du](https://github.com/purod) and Chi Zhang*
 
+- [1. Introduction](#1-introduction)
+- [2. Installation](#2-installation)
+- [3. Data input](#3-data-input)
+- [4. Quick start](#4-quick-start)
+- [5. Functions](#5-functions)
+	- [5.1 getDepth](#51-getdepth)
+	- [5.2 getGeneinfo](#52-getgeneinfo)
+	- [5.3 spliceGene](#53-splicegene)
+	- [5.4 spliceGenome](#54-splicegenome)
+	- [5.5 BMfinder](#55-bmfinder)
+	- [5.6 spliceplot](#56-spliceplot)
+
 ## 1. Introduction
 ---------------
 
-**VaSP** is an R package for discovery of genome-wide variable splicing events 
-from short-read RNA-seq data. Based on R package 
-[Ballgown](https://github.com/alyssafrazee/ballgown), VaSP calculates Single S
-plicing Strength (3S) score of any intron by the junction count normalized by 
-the gene-level average read coverage (score=junction count/gene-level average 
-read coverage). The 3S scores can be used for further analysis, such as 
-differential splicing analysis between two sample groups and sQTL (splicing 
-Quantitative Trait Locus) identification in a large population. The VaSP 
-package provides a function to find large-effect differential splicing events 
-without the need of genotypic information in an inbred plant population, so 
-called genotype-specific splicing (GSS). Integrated with functions from R 
+**VaSP** is an R package for the discovery of genome-wide variable splicing 
+events from short-read RNA-seq data. Based on R package 
+[Ballgown](https://github.com/alyssafrazee/ballgown), VaSP calculates Single 
+Splicing the Strength (3S) score of an intron by the junction count normalized 
+by the gene-level average read coverage (score=junction 
+count/gene-level average read coverage). The 3S scores can be used for further 
+analysis, such as differential splicing analysis between two sample groups and 
+sQTL (splicing Quantitative Trait Locus) identification in a large population. 
+The VaSP package provides a function to find large-effect differential splicing 
+events without the need of genotypic information in an inbred plant population, 
+so called genotype-specific splicing (GSS). Integrated with functions from R 
 package [Sushi](https://github.com/dphansti/Sushi), VaSP package also provides 
-function to visualization of gene splicing information for publication-quality 
-multi-panel figures.
+a function to visualize gene splicing information for publication-quality multi-
+panel figures.
 
 ## 2. Installation
 ---------------
@@ -32,10 +44,11 @@ Start R and run:
 -------------
 
 Users need to follow the manual of R package Ballgown
-(<https://github.com/alyssafrazee/ballgown>) to creat a ballgown object
+(<https://github.com/alyssafrazee/ballgown>) to create a ballgown object
 as an input for the VaSP package. See `?ballgown` for detailed
 information on creating Ballgown objects. The object can be stored in a
-`.RDate` file by `save()` .
+`.RDate` file by `save()` . Here is an example of constructing rice.bg object 
+from HISAT2+StringTie output
 
     library(vasp)
     ?ballgown
@@ -117,7 +130,7 @@ information.
                start = 1179000, end = 1179300)
     #> [1] "yes"
 
-![](https://github.com/yuhuihui2011/vasp/blob/master/figure/splicePlot-1.png)
+![](https://github.com/yuhuihui2011/vasp/blob/master/README_files/splicePlot-1.png)
 
 ## 5. Functions
 ------------
@@ -165,7 +178,7 @@ data.frame in bedgraph file format which can be used as input for
     mtext("Depth", side = 2, line = 2.5, cex = 1.2, font = 2)
     labelgenome("Chr1", 1171800, 1179400, side = 1, scipen = 20, n = 5, scale = "Kb")
 
-![](https://github.com/yuhuihui2011/vasp/blob/master/figure/plotBedgraph-1.png)
+![](https://github.com/yuhuihui2011/vasp/blob/master/README_files/plotBedgraph-1.png)
 
 ### 5.2 getGeneinfo
 
@@ -190,12 +203,11 @@ as input for `plotGenes` in the **SuShi** package
     #>      MSTRG.183.3      MSTRG.183.4      MSTRG.183.5 
     #>               14               14               14
 
-    library(Sushi)
 
-    chrom            = geneinfo$chrom[1]
-    chromstart       = min(geneinfo$start) - 1e3
-    chromend         = max(geneinfo$stop) + 1e3
-    color            = rep(SushiColors(2)(length(trans)), trans)
+    chrom = geneinfo$chrom[1]
+    chromstart = min(geneinfo$start) - 1e3
+    chromend = max(geneinfo$stop) + 1e3
+    color = rep(SushiColors(2)(length(trans)), trans)
 
     par(mar=c(3,1,1,1))
     p<-plotGenes(geneinfo, chrom, chromstart, chromend, col = color, bheight = 0.2, 
@@ -203,7 +215,7 @@ as input for `plotGenes` in the **SuShi** package
     #> [1] "yes"
     labelgenome(chrom, chromstart , chromend, side = 1, n = 5, scale = "Kb")
 
-![](https://github.com/yuhuihui2011/vasp/blob/master/figure/plotGenes-1.png)
+![](https://github.com/yuhuihui2011/vasp/blob/master/README_files/plotGenes-1.png)
 
 ### 5.3 spliceGene
 
@@ -349,14 +361,14 @@ information in a gene region. This function is a wrapper of `getDepth`,
     splicePlot(rice.bg, samples, bam.dir, gene = "MSTRG.183", junc.text = FALSE, bheight = 0.2)
     #> [1] "yes"
 
-![](https://github.com/yuhuihui2011/vasp/blob/master/figure/unnamed-chunk-9-1.png)
+![](https://github.com/yuhuihui2011/vasp/blob/master/README_files/unnamed-chunk-9-1.png)
 
 
     ## plot the alternative splicing region with junction splicing scores
     splicePlot(rice.bg, samples, bam.dir, gene = "MSTRG.183", start = 1179000)
     #> [1] "yes"
 
-![](https://github.com/yuhuihui2011/vasp/blob/master/figure/unnamed-chunk-9-2.png)
+![](https://github.com/yuhuihui2011/vasp/blob/master/README_files/unnamed-chunk-9-2.png)
 
 If the bam files are provided (`bam.dir` is not NA), the read depth for
 each sample is plotted. Otherwise (`bam.dir=NA`), the coserved exons of
@@ -370,75 +382,7 @@ label with junction read counts.
     splicePlot(rice.bg, samples, bam.dir, gene = "MSTRG.183", junc.type = 'count', start = 1179000)
     #> [1] "yes"
 
-![](https://github.com/yuhuihui2011/vasp/blob/master/figure/unnamed-chunk-10-1.png)
+![](https://github.com/yuhuihui2011/vasp/blob/master/README_files/unnamed-chunk-10-1.png)
 
 There are other more options to modify the plot, please see the function
 `?splicePlot` for details.
-
-## 6. Session Information
-----------------------
-
-    sessionInfo()
-    #> R version 3.6.1 (2019-07-05)
-    #> Platform: x86_64-pc-linux-gnu (64-bit)
-    #> Running under: Ubuntu 18.04.3 LTS
-    #> 
-    #> Matrix products: default
-    #> BLAS:   /usr/lib/x86_64-linux-gnu/blas/libblas.so.3.7.1
-    #> LAPACK: /usr/lib/x86_64-linux-gnu/lapack/liblapack.so.3.7.1
-    #> 
-    #> locale:
-    #>  [1] LC_CTYPE=en_US.UTF-8       LC_NUMERIC=C              
-    #>  [3] LC_TIME=en_US.UTF-8        LC_COLLATE=en_US.UTF-8    
-    #>  [5] LC_MONETARY=en_US.UTF-8    LC_MESSAGES=en_US.UTF-8   
-    #>  [7] LC_PAPER=en_US.UTF-8       LC_NAME=C                 
-    #>  [9] LC_ADDRESS=C               LC_TELEPHONE=C            
-    #> [11] LC_MEASUREMENT=en_US.UTF-8 LC_IDENTIFICATION=C       
-    #> 
-    #> attached base packages:
-    #> [1] stats     graphics  grDevices utils     datasets  methods   base     
-    #> 
-    #> other attached packages:
-    #> [1] Sushi_1.24.0    biomaRt_2.42.0  zoo_1.8-7       vasp_2.0.1     
-    #> [5] ballgown_2.18.0
-    #> 
-    #> loaded via a namespace (and not attached):
-    #>  [1] Biobase_2.46.0              httr_1.4.1                 
-    #>  [3] bit64_0.9-7                 splines_3.6.1              
-    #>  [5] assertthat_0.2.1            askpass_1.1                
-    #>  [7] stats4_3.6.1                BiocFileCache_1.10.2       
-    #>  [9] blob_1.2.1                  GenomeInfoDbData_1.2.2     
-    #> [11] Rsamtools_2.2.2             yaml_2.2.1                 
-    #> [13] progress_1.2.2              pillar_1.4.3               
-    #> [15] RSQLite_2.2.0               lattice_0.20-38            
-    #> [17] glue_1.3.1                  limma_3.42.2               
-    #> [19] digest_0.6.24               GenomicRanges_1.38.0       
-    #> [21] RColorBrewer_1.1-2          XVector_0.26.0             
-    #> [23] htmltools_0.4.0             Matrix_1.2-18              
-    #> [25] XML_3.99-0.3                pkgconfig_2.0.3            
-    #> [27] genefilter_1.68.0           zlibbioc_1.32.0            
-    #> [29] purrr_0.3.3                 xtable_1.8-4               
-    #> [31] BiocParallel_1.20.1         tibble_2.1.3               
-    #> [33] openssl_1.4.1               annotate_1.64.0            
-    #> [35] mgcv_1.8-31                 IRanges_2.20.2             
-    #> [37] SummarizedExperiment_1.16.1 BiocGenerics_0.32.0        
-    #> [39] survival_3.1-8              magrittr_1.5               
-    #> [41] crayon_1.3.4                memoise_1.1.0              
-    #> [43] evaluate_0.14               nlme_3.1-143               
-    #> [45] tools_3.6.1                 prettyunits_1.1.1          
-    #> [47] hms_0.5.3                   matrixStats_0.55.0         
-    #> [49] stringr_1.4.0               S4Vectors_0.24.3           
-    #> [51] cluster_2.1.0               DelayedArray_0.12.2        
-    #> [53] AnnotationDbi_1.48.0        Biostrings_2.54.0          
-    #> [55] compiler_3.6.1              GenomeInfoDb_1.22.0        
-    #> [57] rlang_0.4.4                 grid_3.6.1                 
-    #> [59] RCurl_1.98-1.1              rappdirs_0.3.1             
-    #> [61] bitops_1.0-6                rmarkdown_2.1              
-    #> [63] curl_4.3                    DBI_1.1.0                  
-    #> [65] R6_2.4.1                    GenomicAlignments_1.22.1   
-    #> [67] knitr_1.28                  dplyr_0.8.4                
-    #> [69] rtracklayer_1.46.0          bit_1.1-15.2               
-    #> [71] stringi_1.4.6               parallel_3.6.1             
-    #> [73] sva_3.34.0                  Rcpp_1.0.3                 
-    #> [75] vctrs_0.2.3                 tidyselect_1.0.0           
-    #> [77] dbplyr_1.4.2                xfun_0.12

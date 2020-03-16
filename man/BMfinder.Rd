@@ -4,15 +4,8 @@
 \alias{BMfinder}
 \title{Discover bimodal distrubition features}
 \usage{
-BMfinder(
-  x,
-  p.value = 0.01,
-  maf = 0.05,
-  miss = 0.05,
-  fold = 2,
-  log = FALSE,
-  cores = detectCores() - 1
-)
+BMfinder(x, p.value = 0.01, maf = 0.05, miss = 0.05, fold = 2, log = FALSE,
+    cores = detectCores() - 1)
 }
 \arguments{
 \item{x}{a numeric matrix with feature rows and sample columns, e.g.,

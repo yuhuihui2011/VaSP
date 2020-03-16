@@ -4,15 +4,8 @@
 \alias{getGeneinfo}
 \title{Get Gene Informaton from a ballgown object}
 \usage{
-getGeneinfo(
-  genes = NA,
-  bg,
-  chrom,
-  start,
-  end,
-  samples = sampleNames(bg),
-  trans.select = NA
-)
+getGeneinfo(genes = NA, bg, chrom, start, end, samples = sampleNames(bg), 
+    trans.select = NA)
 }
 \arguments{
 \item{genes}{a character vector specifying gene IDs in 'bg'. Any values other
@@ -30,8 +23,8 @@ than NA override genomic region (chrom, start, stop)}
 subjected to 'trans.select'}
 
 \item{trans.select}{logical expression-like string, indicating transcript
-rows to select
- from a matrix of transcript coverages: NA value keeps all transcripts.}
+rows to select from a matrix of transcript coverages: NA value keeps all 
+transcripts.}
 }
 \value{
 a data.frame in bed-like file format that can be used as input for
@@ -44,21 +37,21 @@ Get gene informaton from a ballgown object by genes or by genomic regions
 data(rice.bg)
 unique(geneIDs(rice.bg))
 
-gene_id <- c("MSTRG.181", "MSTRG.182", "MSTRG.183")
+gene_id <- c('MSTRG.181', 'MSTRG.182', 'MSTRG.183')
 geneinfo <- getGeneinfo(genes=gene_id,rice.bg)
 trans <- table(geneinfo$name) # show how many exons each transcript has
 trans
 
 library(Sushi)
-chrom            = geneinfo$chrom[1]
-chromstart       = min(geneinfo$start) - 1e3
-chromend         = max(geneinfo$stop) + 1e3
-color            = rep(SushiColors(2)(length(trans)), trans)
+chrom = geneinfo$chrom[1]
+chromstart = min(geneinfo$start) - 1e3
+chromend = max(geneinfo$stop) + 1e3
+color = rep(SushiColors(2)(length(trans)), trans)
 
 par(mar=c(3,1,1,1))
 plotGenes(geneinfo, chrom, chromstart, chromend, col = color, bheight = 0.2,
-           bentline = FALSE, plotgenetype = "arrow", labeloffset = 0.5)
-labelgenome(chrom, chromstart , chromend, side = 1, n = 5, scale = "Kb")
+    bentline = FALSE, plotgenetype = 'arrow', labeloffset = 0.5)
+labelgenome(chrom, chromstart , chromend, side = 1, n = 5, scale = 'Kb')
 }
 \seealso{
 \code{\link{splicePlot}}; \code{\link[Sushi]{plotGenes}} in

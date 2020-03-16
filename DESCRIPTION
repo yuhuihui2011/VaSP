@@ -1,21 +1,23 @@
 Package: vasp
 Type: Package
+Version: 0.99.17
 Title: Quantification and Visulization of Variations of Splicing in Population  
-Version: 0.99.16
 Author: Huihui Yu, Qian Du, Chi Zhang
 Maintainer: Huihui Yu <yuhuihui2011@foxmail.com>
 Description: Discovery of genome-wide variable alternative splicing events from 
-  short-read RNA-seq data and visualizations of gene splicing information for 
-  publication-quality multi-panel figures. 
+    short-read RNA-seq data and visualizations of gene splicing information for 
+    publication-quality multi-panel figures. 
+URL: https://github.com/yuhuihui2011/vasp
+BugReports: https://github.com/yuhuihui2011/vasp/issues
 License: GPL (>= 2.0)
 Depends: R (>= 4.0), ballgown
-Imports: IRanges, GenomicRanges, GenomeInfoDb, S4Vectors, Sushi, parallel, 
-  matrixStats, GenomicAlignments, Rsamtools, cluster, stats, graphics, methods
+Imports: IRanges, GenomicRanges, S4Vectors, Sushi, parallel, matrixStats, 
+    GenomeInfoDb, Rsamtools, cluster, stats, graphics, methods
 Suggests: knitr, rmarkdown
 VignetteBuilder: knitr
 biocViews: RNASeq, AlternativeSplicing, DifferentialSplicing, StatisticalMethod,
-  Visualization, KEGG, Preprocessing, Clustering, ImmunoOncology,
-  DifferentialExpression
+    Visualization, KEGG, Preprocessing, Clustering, ImmunoOncology,
+    DifferentialExpression
 Encoding: UTF-8
 LazyData: false
 RoxygenNote: 7.0.2

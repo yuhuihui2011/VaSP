@@ -4,23 +4,11 @@
 \alias{splicePlot}
 \title{Gene Splicing Plot}
 \usage{
-splicePlot(
-  bg,
-  gene,
-  samples,
-  bam.dir = NA,
-  start = NA,
-  end = NA,
-  labels = samples,
-  junc.type = c("score", "count"),
-  junc.text = TRUE,
-  trans.select = "rowMaxs(x)>=1",
-  junc.select = "rowMaxs(x)>=5",
-  col.depth = SushiColors(2)(length(samples) + 1)[-1],
-  scale = "Kb",
-  plotgenetype = "arrow",
-  ...
-)
+splicePlot(bg, gene, samples, bam.dir = NA, start = NA, end = NA,
+    labels = samples, junc.type = c("score", "count"), junc.text = TRUE,
+    trans.select = "rowMaxs(x)>=1", junc.select = "rowMaxs(x)>=5",
+    col.depth = SushiColors(2)(length(samples) + 1)[-1], scale = "Kb",
+    plotgenetype = "arrow", ...)
 }
 \arguments{
 \item{bg}{ballgown object. See \code{\link[=ballgown-class]{ballgown}}.}

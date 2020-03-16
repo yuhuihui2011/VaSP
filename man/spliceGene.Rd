@@ -4,14 +4,8 @@
 \alias{spliceGene}
 \title{Calculate Splicing Scores for One Gene}
 \usage{
-spliceGene(
-  bg,
-  gene,
-  samples = sampleNames(bg),
-  junc.type = c("score", "count"),
-  trans.select = "rowMaxs(x)>=1",
-  junc.select = "rowMaxs(x)>=5"
-)
+spliceGene(bg, gene, samples = sampleNames(bg),junc.type = c("score", "count"), 
+    trans.select = "rowMaxs(x)>=1", junc.select = "rowMaxs(x)>=5")
 }
 \arguments{
 \item{bg}{ballgown object}
@@ -25,12 +19,12 @@ spliceGene(
 
 \item{trans.select}{logical expression-like string, indicating transcript
 rows to select from a matrix of transcript coverages: NA value keeps all
-transcripts. e.g. use trans.select="rowMaxs(x)>=1" to filter the transcrpts
+transcripts. e.g. use trans.select='rowMaxs(x)>=1' to filter the transcrpts
 with the maximium coverage among all the samples less than 1.}
 
 \item{junc.select}{logical expression-like string, indicating junction rows
 to select from a matrix of junction counts: NA value keeps all junctions.
-e.g. use junc.select="rowMaxs(x)>=5" to filter the junctions with the
+e.g. use junc.select='rowMaxs(x)>=5' to filter the junctions with the
 maximium read count among all the samples less than 5.}
 }
 \value{
