@@ -1,6 +1,7 @@
 # vasp/VaSP: Quantification and Visulization of <br>Variations of Splicing in Population
 *by [Huihui Yu](https://github.com/yuhuihui2011), [Qian Du](https://github.com/purod) and Chi Zhang*
 
+## Table of contents
 - [1. Introduction](#1-introduction)
 - [2. Installation](#2-installation)
 - [3. Data input](#3-data-input)
