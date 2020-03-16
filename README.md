@@ -1,6 +1,14 @@
 # vasp
 Quantification and Visulization of Variations of Splicing in Population
 
+## Table of contents
+- [Introduction](#introduction)
+- [Installation](#installation)
+- [Data input](#data-input)
+- [Quick start](#quick-start)
+- [Features](#features)
+- [Contributors](#contributors)
+- [License](#license)
 
 
 ## Introduction
@@ -102,7 +110,7 @@ Calculate 3S (Single Splicing Strength) scores, find GSS (genotype-specific spli
 
 ## Features
 
-Detailed usage examples are available in the [Vignette](https://github.com/yuhuihui2011/vasp/blob/master/vignettes/vasp.md).
+Detailed usage examples are available in the [Vignette](https://github.com/yuhuihui2011/vasp/blob/master/README_files/vasp.md).
 
 ## Contributors
 
