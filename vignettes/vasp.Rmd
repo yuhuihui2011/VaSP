@@ -117,9 +117,9 @@ head(depth)
 
 library(Sushi)
 par(mar=c(3,5,1,1))
-plotBedgraph(depth, "Chr1", chromstart = 1171800, chromend = 1179400, yaxt = "s")
+plotBedgraph(depth, "Chr1", chromstart = 1171800, chromend = 1179400,yaxt = "s")
 mtext("Depth", side = 2, line = 2.5, cex = 1.2, font = 2)
-labelgenome("Chr1", 1171800, 1179400, side = 1, scipen = 20, n = 5, scale = "Kb")
+labelgenome("Chr1", 1171800, 1179400, side = 1, scipen = 20, n = 5,scale = "Kb")
 ```
 
 ### 5.2 getGeneinfo
