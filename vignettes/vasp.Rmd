@@ -8,7 +8,7 @@ output:
     rmarkdown::html_vignette:
         toc: true 
 vignette: >
-    %\VignetteIndexEntry{help for VaSP package}
+    %\VignetteIndexEntry{Variations of Splicing in Population}
     %\VignetteEngine{knitr::rmarkdown}
     %\VignetteEncoding{UTF-8}
 ---
