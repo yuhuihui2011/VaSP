@@ -1,6 +1,6 @@
 Package: vasp
 Type: Package
-Version: 0.99.21
+Version: 0.99.22
 Title: Quantification and Visulization of Variations of Splicing in Population  
 Author: Huihui Yu, Qian Du, Chi Zhang
 Maintainer: Huihui Yu <yuhuihui2011@foxmail.com>
@@ -10,7 +10,7 @@ Description: Discovery of genome-wide variable alternative splicing events from
 URL: https://github.com/yuhuihui2011/vasp
 BugReports: https://github.com/yuhuihui2011/vasp/issues
 License: GPL (>= 2.0)
-Depends: ballgown
+Depends: R, ballgown
 Imports: IRanges, GenomicRanges, S4Vectors, Sushi, parallel, matrixStats, 
     GenomicAlignments, GenomeInfoDb, Rsamtools, cluster, stats, graphics, methods
 Suggests: knitr, rmarkdown
