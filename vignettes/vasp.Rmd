@@ -38,11 +38,23 @@ splicing information for publication-quality multi-panel figures.
 
 ## 2. Installation
 
-Start R and run:
-```{r, eval=FALSE}
-if (!requireNamespace("BiocManager", quietly=TRUE))
+Start R (>= 4.0) and run:
+
+```{r,eval=FALSE}
+if (!requireNamespace("BiocManager", quietly = TRUE))
     install.packages("BiocManager")
-BiocManager::install("vasp",build_vignettes=TRUE)
+
+# The following initializes usage of Bioc devel
+BiocManager::install(version='devel')
+
+BiocManager::install("vasp", build_vignettes=TRUE)
+vignette('vasp')
+```
+
+If you use an older version of R (>=3.5.0), enter:
+
+```{r,eval=FALSE}
+BiocManager::install("yuhuihui2011/vasp@R3", build_vignettes=TRUE)
 vignette('vasp')
 ```
 
