@@ -33,6 +33,12 @@
 #'
 #' head(splice$score)
 #' splice$intron
+#' 
+#' @references 
+#' Yu, H., Du, Q., Campbell, M., Yu, B., Walia, H. and Zhang, C. (2021), 
+#' Genome‐Wide Discovery of Natural Variation in Pre‐mRNA Splicing and 
+#' Prioritizing Causal Alternative Splicing to Salt Stress Response in Rice. 
+#' New Phytol. <https://doi.org/10.1111/nph.17189>
 
 spliceGenome <- function(bg, gene.select = "rowQuantiles(x,probs = 0.05)>=1", 
     intron.select = "rowQuantiles(x,probs = 0.95)>=5") {
@@ -49,25 +55,22 @@ spliceGenome <- function(bg, gene.select = "rowQuantiles(x,probs = 0.05)>=1",
     cat("\t", nrow(g_cov), "genes selected.\n")
     
     cat("---Extract intron-level read ucount:\n")
+    intron<-ballgown::structure(bg)$intron
+    intron$gene_id<-geneIDs(bg)[vapply(intron$transcripts,function(x) {
+        as.numeric(eval(parse(text=x))[1])
+    }, 1)]
+    intron<-intron[intron$gene_id%in%rownames(g_cov)]    
     ie <- iexpr(bg, "ucount")
-    index <- which(geneIDs(bg) %in% rownames(g_cov))
-    i2t <- indexes(bg)$i2t
-    i_id <- sort(unique(i2t$i_id[i2t$t_id %in% index]))
-    ie <- ie[i_id, , drop = FALSE]
+    ie <- subset(ie,rownames(ie)%in%intron$id)
     if (!is.na(intron.select)) {
-        ie <- subset(ie, subset = eval(parse(text = intron.select), 
-                                        list(x = ie)))
+        ie <- subset(ie, eval(parse(text = intron.select), list(x = ie)))
     }
-    i_id <- as.numeric(rownames(ie))
-    g_id <- geneIDs(bg)[i2t$t_id[match(i_id, i2t$i_id)]]
-    g_cov <- g_cov[match(g_id, rownames(g_cov)), , drop = FALSE]
-    cat("\t", nrow(g_cov), "introns in", length(unique(g_id)), 
+    intron<-intron[match(rownames(ie),intron$id)]
+    g_cov <- g_cov[match(intron$gene_id, rownames(g_cov)), , drop = FALSE]
+    cat("\t", nrow(g_cov), "introns in", length(unique(intron$gene_id)), 
         "genes selected.\n")
     score <- ifelse(g_cov == 0, NA, ie/g_cov)
-    rownames(score) <- i_id
+    rownames(score) <- intron$id
     colnames(score) <- sampleNames(bg)
-    intron <- ballgown::structure(bg)$intron[i_id]
-    names(intron) <- i_id
-    intron$gene_id <- g_id
     list(score = score, intron = intron)
 }

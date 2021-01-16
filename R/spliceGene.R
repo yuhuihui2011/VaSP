@@ -40,6 +40,12 @@
 #' ## get intron structrue
 #' intron<-structure(rice.bg)$intron
 #' intron[intron$id%in%rownames(score)]
+#' 
+#' @references 
+#' Yu, H., Du, Q., Campbell, M., Yu, B., Walia, H. and Zhang, C. (2021), 
+#' Genome‐Wide Discovery of Natural Variation in Pre‐mRNA Splicing and 
+#' Prioritizing Causal Alternative Splicing to Salt Stress Response in Rice. 
+#' New Phytol. <https://doi.org/10.1111/nph.17189>
 
 spliceGene <- function(bg, gene, samples = sampleNames(bg), 
                         junc.type = c("score", "count"), 
@@ -51,8 +57,7 @@ spliceGene <- function(bg, gene, samples = sampleNames(bg),
     cov <- subset(texpr(bg, "cov"), geneIDs(bg) == gene, paste0("cov.", 
         samples))
     if (!is.na(trans.select)) {
-        cov <- subset(cov, subset = eval(parse(text = trans.select), 
-                                        list(x = cov)))
+        cov <- subset(cov, eval(parse(text = trans.select), list(x = cov)))
     }
     if (nrow(cov) == 0) {
         warning("No transcript in the gene retained!\n")
@@ -63,8 +68,7 @@ spliceGene <- function(bg, gene, samples = sampleNames(bg),
     count <- subset(count, rownames(count) %in% i2t[i2t$t_id %in% index, 
         ]$i_id, paste0("ucount.", samples))
     if (!is.na(junc.select) & nrow(count) > 0) {
-        count <- subset(count, subset = eval(parse(text = junc.select), 
-            list(x = count)))
+        count <- subset(count, eval(parse(text = junc.select), list(x = count)))
     }
     if (nrow(count) == 0) {
         warning("No junction retained!\n")

@@ -1,11 +1,7 @@
 Package: vasp
 Type: Package
-Version: 0.99.26
-Title: Quantification and Visulization of Variations of Splicing in Population
-Authors@R: c(person("Huihui", "Yu", role = c("aut", "cre"),
-                    email = "yuhuihui2011@foxmail.com"),
-            person("Qian", "Du", role = c("aut", "cre")),
-            person("Chi", "Zhang", role = "aut"))
+Version: 1.2.1
+Title: VaSP: Quantification and Visualization of Variations of Splicing in Population
 Author: Huihui Yu, Qian Du, Chi Zhang
 Maintainer: Huihui Yu <yuhuihui2011@foxmail.com>
 Description: Discovery of genome-wide variable alternative splicing events from 
@@ -20,8 +16,8 @@ Imports: IRanges, GenomicRanges, S4Vectors, Sushi, parallel, matrixStats,
 Suggests: knitr, rmarkdown
 VignetteBuilder: knitr
 biocViews: RNASeq, AlternativeSplicing, DifferentialSplicing, StatisticalMethod,
-    Visualization, KEGG, Preprocessing, Clustering, ImmunoOncology,
-    DifferentialExpression
+    Visualization, Preprocessing, Clustering, DifferentialExpression, KEGG, 
+    ImmunoOncology
 Encoding: UTF-8
 LazyData: false
-RoxygenNote: 7.0.2
+RoxygenNote: 7.1.1

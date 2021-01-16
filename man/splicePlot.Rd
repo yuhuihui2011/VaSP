@@ -4,11 +4,11 @@
 \alias{splicePlot}
 \title{Gene Splicing Plot}
 \usage{
-splicePlot(bg, gene, samples, bam.dir = NA, start = NA, end = NA,
-    labels = samples, junc.type = c("score", "count"), junc.text = TRUE,
-    trans.select = "rowMaxs(x)>=1", junc.select = "rowMaxs(x)>=5",
-    col.depth = SushiColors(2)(length(samples) + 1)[-1], scale = "Kb",
-    plotgenetype = "arrow", ...)
+splicePlot(bg, gene, samples, bam.dir = NA, start = NA, end = NA, 
+            labels = samples, junc.type = c("score", "count"), junc.text = TRUE,
+            trans.select = "rowMaxs(x)>=1", junc.select = "rowMaxs(x)>=5",
+            col = SushiColors(2)(length(samples) + 1)[-1],transparency = 0.5,
+            scale = "Kb", plotgenetype = "arrow", ...)
 }
 \arguments{
 \item{bg}{ballgown object. See \code{\link[=ballgown-class]{ballgown}}.}
@@ -44,7 +44,10 @@ transcripts. See \code{\link{spliceGene}}}
 to select from a matrix of junction counts: NA value keeps all junctions.
 See \code{\link{spliceGene}}}
 
-\item{col.depth}{a vector of length(samples) specifying colors of read depth.}
+\item{col}{a vector of length(samples) specifying colors of read depths.}
+
+\item{transparency}{value between 0 and 1 indicating the degree of 
+transparency of read depths.}
 
 \item{scale}{scale of the \code{\link[Sushi]{labelgenome}} ('bp','Kb','Mb')}
 

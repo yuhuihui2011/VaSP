@@ -4,8 +4,8 @@
 \alias{spliceGene}
 \title{Calculate Splicing Scores for One Gene}
 \usage{
-spliceGene(bg, gene, samples = sampleNames(bg),junc.type = c("score", "count"), 
-    trans.select = "rowMaxs(x)>=1", junc.select = "rowMaxs(x)>=5")
+spliceGene(bg, gene, samples = sampleNames(bg), junc.type = c("score", "count"),
+            trans.select = "rowMaxs(x)>=1", junc.select = "rowMaxs(x)>=5")
 }
 \arguments{
 \item{bg}{ballgown object}
@@ -55,6 +55,13 @@ tail(count)
 ## get intron structrue
 intron<-structure(rice.bg)$intron
 intron[intron$id\%in\%rownames(score)]
+
+}
+\references{
+Yu, H., Du, Q., Campbell, M., Yu, B., Walia, H. and Zhang, C. (2021), 
+Genome‐Wide Discovery of Natural Variation in Pre‐mRNA Splicing and 
+Prioritizing Causal Alternative Splicing to Salt Stress Response in Rice. 
+New Phytol. <https://doi.org/10.1111/nph.17189>
 }
 \seealso{
 \code{\link{spliceGenome}}, which calculates splicing scores in

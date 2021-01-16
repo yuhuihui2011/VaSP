@@ -5,7 +5,7 @@
 \title{Calculate Genome-wide Splicing Scores}
 \usage{
 spliceGenome(bg, gene.select = "rowQuantiles(x,probs = 0.05)>=1",
-    intron.select = "rowQuantiles(x,probs = 0.95)>=5")
+            intron.select = "rowQuantiles(x,probs = 0.95)>=5")
 }
 \arguments{
 \item{bg}{ballgown object}
@@ -46,6 +46,13 @@ names(splice)
 
 head(splice$score)
 splice$intron
+
+}
+\references{
+Yu, H., Du, Q., Campbell, M., Yu, B., Walia, H. and Zhang, C. (2021), 
+Genome‐Wide Discovery of Natural Variation in Pre‐mRNA Splicing and 
+Prioritizing Causal Alternative Splicing to Salt Stress Response in Rice. 
+New Phytol. <https://doi.org/10.1111/nph.17189>
 }
 \seealso{
 \code{\link{spliceGene}}, which calculates splicing scores in one

@@ -26,7 +26,9 @@
 #' @param junc.select logical expression-like string, indicating junction rows
 #' to select from a matrix of junction counts: NA value keeps all junctions.
 #' See \code{\link{spliceGene}}
-#' @param col.depth a vector of length(samples) specifying colors of read depth.
+#' @param col a vector of length(samples) specifying colors of read depths.
+#' @param transparency value between 0 and 1 indicating the degree of 
+#' transparency of read depths.
 #' @param scale scale of the \code{\link[Sushi]{labelgenome}} ('bp','Kb','Mb')
 #' @param plotgenetype string specifying whether the genes should resemble a
 #' 'box' or a 'arrow'. See \code{\link[Sushi]{plotGenes}}.
@@ -54,8 +56,8 @@
 splicePlot <- function(bg, gene, samples, bam.dir = NA, start = NA, end = NA, 
     labels = samples, junc.type = c("score", "count"), junc.text = TRUE, 
     trans.select = "rowMaxs(x)>=1", junc.select = "rowMaxs(x)>=5", 
-    col.depth = SushiColors(2)(length(samples) + 1)[-1], scale = "Kb", 
-    plotgenetype = "arrow", ...) {
+    col = SushiColors(2)(length(samples) + 1)[-1], transparency=0.5,
+    scale = "Kb", plotgenetype = "arrow", ...) {
     ### check samples and files
     sample_check <- samples[!samples %in% sampleNames(bg)]
     if (length(sample_check) > 0) {
@@ -138,13 +140,13 @@ splicePlot <- function(bg, gene, samples, bam.dir = NA, start = NA, end = NA,
         label_x <- mid(gap[which.max(width(gap))])
     }
     # plot depth
-    par(mar = c(0.5, 3, 0.5, 0.5))
+    par(mar = c(0.5, 3, 1, 0.5))
     for (i in seq_len(length(samples))) {
         height <- max(get(samples[i])[, 4], na.rm = TRUE)
         height <- ifelse(height < 5, 5, height)
         plotBedgraph(get(samples[i]), chrom, start - 1, end + 1, 
-                    transparency = 0.5, color = col.depth[i], 
-                    range = c(-height/2, height))
+                    transparency = transparency, color = col[i], xaxt = "n", 
+                    yaxt = "n", range = c(-height/2, height))
         if (!is.na(bam.dir)) {
             axis(side = 2, las = 2, at = pretty(c(0, height)))
             grid()
@@ -165,7 +167,7 @@ splicePlot <- function(bg, gene, samples, bam.dir = NA, start = NA, end = NA,
             arc <- function(x) h * sin(pi * (x - x1)/(x2 - x1) * (-1)^(j + 
                 adj))
             curve(arc, from = x1, to = x2, lwd = lwd, add = TRUE, xname = "x", 
-                type = "l", col = col.depth[i], lty = ifelse(score[j, i] == 
+                type = "l", col = col[i], lty = ifelse(score[j, i] == 
                 0, 2, 1))
             if (junc.text) {
                 text((x1 + x2)/2, h * (-1)^(j + adj) * 1.5, round(score[j, 

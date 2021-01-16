@@ -1,38 +1,35 @@
-# vasp/VaSP: Quantification and Visulization of <br>Variations of Splicing in Population
+# VaSP: Quantification and Visulization of <br>Variations of Splicing in Population
 *by [Huihui Yu](https://github.com/yuhuihui2011), [Qian Du](https://github.com/purod) and Chi Zhang*
 
 ## Table of contents
 - [1. Introduction](#1-introduction)
-- [2. Installation](#2-installation)
-- [3. Data input](#3-data-input)
-- [4. Quick start](#4-quick-start)
-- [5. Functions](#5-functions)
-	- [5.1 getDepth](#51-getdepth)
-	- [5.2 getGeneinfo](#52-getgeneinfo)
-	- [5.3 spliceGene](#53-splicegene)
-	- [5.4 spliceGenome](#54-splicegenome)
-	- [5.5 BMfinder](#55-bmfinder)
-	- [5.6 spliceplot](#56-spliceplot)
+- [2. Citation](#2-citation)
+- [3. Installation](#3-installation)
+- [4. Data input](#4-data-input)
+- [5. Quick start](#5-quick-start)
+- [6. Functions](#6-functions)
+	- [6.1 getDepth](#61-getdepth)
+	- [6.2 getGeneinfo](#62-getgeneinfo)
+	- [6.3 spliceGene](#63-splicegene)
+	- [6.4 spliceGenome](#64-splicegenome)
+	- [6.5 BMfinder](#65-bmfinder)
+	- [6.6 splicePlot](#66-spliceplot)
 
 ## 1. Introduction
 ---------------
 
-**VaSP** is an R package for the discovery of genome-wide variable splicing 
-events from short-read RNA-seq data. Based on R package 
-[Ballgown](https://github.com/alyssafrazee/ballgown), VaSP calculates Single 
-Splicing the Strength (3S) score of an intron by the junction count normalized 
-by the gene-level average read coverage (score=junction 
-count/gene-level average read coverage). The 3S scores can be used for further 
-analysis, such as differential splicing analysis between two sample groups and 
-sQTL (splicing Quantitative Trait Locus) identification in a large population. 
-The VaSP package provides a function to find large-effect differential splicing 
-events without the need of genotypic information in an inbred plant population, 
-so called genotype-specific splicing (GSS). Integrated with functions from R 
-package [Sushi](https://github.com/dphansti/Sushi), VaSP package also provides 
-a function to visualize gene splicing information for publication-quality multi-
-panel figures.
+**VaSP** is an R package for discovery of genome-wide variable alternative splicing events from short-read RNA-seq data and visualizations of gene splicing information for publication-quality multi-panel figures.
 
-## 2. Installation
+![](https://github.com/yuhuihui2011/vasp/blob/master/README_files/vasp.png)
+
+**Figure 1. Overview of VaSP**. **(A)**. The workflow and functions of [VaSP](https://github.com/yuhuihui2011/vasp). The input is an R data object ballgown (see `?ballgown`) produced by a standard RNA-seq data analysis protocol, including mapping with HISAT, assembling with StringTie, and collecting expression information with R package [Ballgown](https://github.com/alyssafrazee/ballgown). VaSP calculates the Single Splicing Strength (3S) scores for all splicing junctions in the genome (`?spliceGenome`) or in a particular gene (`?spliceGene`), identifies genotype-specific splicing (GSS) events (`?BMfinder`), and displays differential splicing information (`?splicePlot`). The 3S scores can be also used for other analyses, such as differential splicing analysis or splicing QTL identification. **(B)**. VaSP estimates 3S scores based on junction-read counts normalized by gene-level read coverage. In this example, VaSP calculates the splicing scores of four introns in a gene X with two transcript isoforms. Only the fourth intron is a full usage intron excised by both the two isoforms and the other three are alternative donor site (AltD) sites or Intron Retention (IntronR), respectively. **(C)**. Visualization of splicing information in gene MSTRG.183 (LOC_Os01g03070), whole gene without splicing scores. **(D)**. Visualization of differential splicing region of the gene MSTRG.183 with splicing score displaying. In C and D, the y-axes are read depths and the arcs (lines between exons) indicate exon-exon junctions (introns). The dotted arcs indicate no junction-reads spanning the intron (3S = 0) and solid arcs indicate 3S > 0. The transcripts labeled beginning with ‘LOC_Os’ indicate annotated transcripts by reference genome annotation and the ones beginning with “MSTRG” are transcripts assembled by StringTie. ([Yu et al., 2021](#2-citation); https://doi.org/10.1111/nph.17189)
+
+## 2. Citation
+---------------
+
+Yu, H., Du, Q., Campbell, M., Yu, B., Walia, H. and Zhang, C. (2021), Genome‐Wide Discovery of Natural Variation in Pre‐mRNA Splicing and Prioritizing Causal Alternative Splicing to Salt Stress Response in Rice. ***New Phytol***. https://doi.org/10.1111/nph.17189
+
+## 3. Installation
 ---------------
 
 Start R and run:
@@ -42,7 +39,7 @@ Start R and run:
     BBiocManager::install("vasp",build_vignettes=TRUE)
     vignette('vasp')
 
-## 3. Data input
+## 4. Data input
 -------------
 
 Users need to follow the manual of R package Ballgown
@@ -57,7 +54,7 @@ from HISAT2+StringTie output
     path<-system.file('extdata', package='vasp')
     rice.bg<-ballgown(samples = list.dirs(path = path,recursive = F) )
 
-## 4. Quick start
+## 5. Quick start
 --------------
 
 Calculate 3S (Single Splicing Strength) scores, find GSS
@@ -134,7 +131,7 @@ information.
 
 ![](https://github.com/yuhuihui2011/vasp/blob/master/README_files/splicePlot-1.png)
 
-## 5. Functions
+## 6. Functions
 ------------
 
 Currently, there are 6 functions in VaSP:  
@@ -146,7 +143,7 @@ Currently, there are 6 functions in VaSP:
 ***splicePlot***: Visualization of read coverage, splicing information
 and gene information in a gene region
 
-### 5.1 getDepth
+### 6.1 getDepth
 
 Get read depth from a BAM file (in bedgraph format) and return a
 data.frame in bedgraph file format which can be used as input for
@@ -182,7 +179,7 @@ data.frame in bedgraph file format which can be used as input for
 
 ![](https://github.com/yuhuihui2011/vasp/blob/master/README_files/plotBedgraph-1.png)
 
-### 5.2 getGeneinfo
+### 6.2 getGeneinfo
 
 Get gene informaton from a ballgown object by genes or by genomic
 regions and return a data.frame in bed-like file format that can be used
@@ -219,7 +216,7 @@ as input for `plotGenes` in the **SuShi** package
 
 ![](https://github.com/yuhuihui2011/vasp/blob/master/README_files/plotGenes-1.png)
 
-### 5.3 spliceGene
+### 6.3 spliceGene
 
 Calculate 3S Scores from ballgown object for a given gene. This function
 can only calculate one gene. Please use function `spliceGenome` to
@@ -273,7 +270,7 @@ obtain genome-wide 3S scores.
     #>   -------
     #>   seqinfo: 1 sequence from an unspecified genome; no seqlengths
 
-### 5.4 spliceGenome
+### 6.4 spliceGenome
 
 Calculate 3S scores from ballgown objects for all genes and return a
 list of two elelments: "score' is matrix of intron 3S scores with intron
@@ -318,7 +315,7 @@ structure.
     #>   -------
     #>   seqinfo: 1 sequence from an unspecified genome; no seqlengths
 
-### 5.5 BMfinder
+### 6.5 BMfinder
 
 Find bimodal distrubition features and divide the samples into 2 groups
 by k-means clustering and return a matrix with feature rows and sample
@@ -347,7 +344,7 @@ columns.
     #> 58       0.00       0.02       0.22       0.23       0.23       0.23
     #> 59       0.00       0.00       0.00       0.12       0.12       0.12
 
-### 5.6 spliceplot
+### 6.6 splicePlot
 
 Visualization of read coverage, splicing information and gene
 information in a gene region. This function is a wrapper of `getDepth`,

@@ -1,5 +1,4 @@
-# vasp
-Quantification and Visulization of Variations of Splicing in Population
+# VaSP: Quantification and Visualization of Variations of Splicing in Population
 
 ## Table of contents
 - [Introduction](#introduction)
@@ -9,11 +8,16 @@ Quantification and Visulization of Variations of Splicing in Population
 - [Features](#features)
 - [Contributors](#contributors)
 - [License](#license)
+- [Citation](#citation)
 
 
 ## Introduction
 
-**VaSP** is an R package for the discovery of genome-wide variable splicing events from short-read RNA-seq data. Based on R package [Ballgown](https://github.com/alyssafrazee/ballgown), VaSP calculates the Single Splicing Strength (3S) score of an intron by the junction count normalized by the gene-level average read coverage (score=junction count/gene-level average read coverage). The 3S scores can be used for further analysis, such as differential splicing analysis between two sample groups and sQTL (splicing Quantitative Trait Locus) identification in a large population. The VaSP package provides a function to find large-effect differential splicing events without the need of genotypic information in an inbred plant population, so-called genotype-specific splicing (GSS). Integrated with functions from R package [Sushi](https://github.com/dphansti/Sushi), VaSP package also provides a function to visualize gene splicing information for publication-quality multi-panel figures.
+**VaSP** is an R package for discovery of genome-wide variable alternative splicing events from short-read RNA-seq data and visualizations of gene splicing information for publication-quality multi-panel figures.
+
+![](https://github.com/yuhuihui2011/vasp/blob/master/README_files/vasp.png)
+
+**Figure 1. Overview of VaSP**. **(A)**. The workflow and functions of [VaSP](https://github.com/yuhuihui2011/vasp). The input is an R data object ballgown (see `?ballgown`) produced by a standard RNA-seq data analysis protocol, including mapping with HISAT, assembling with StringTie, and collecting expression information with R package [Ballgown](https://github.com/alyssafrazee/ballgown). VaSP calculates the Single Splicing Strength (3S) scores for all splicing junctions in the genome (`?spliceGenome`) or in a particular gene (`?spliceGene`), identifies genotype-specific splicing (GSS) events (`?BMfinder`), and displays differential splicing information (`?splicePlot`). The 3S scores can be also used for other analyses, such as differential splicing analysis or splicing QTL identification. **(B)**. VaSP estimates 3S scores based on junction-read counts normalized by gene-level read coverage. In this example, VaSP calculates the splicing scores of four introns in a gene X with two transcript isoforms. Only the fourth intron is a full usage intron excised by both the two isoforms and the other three are alternative donor site (AltD) sites or Intron Retention (IntronR), respectively. **(C)**. Visualization of splicing information in gene MSTRG.183 (LOC_Os01g03070), whole gene without splicing scores. **(D)**. Visualization of differential splicing region of the gene MSTRG.183 with splicing score displaying. In C and D, the y-axes are read depths and the arcs (lines between exons) indicate exon-exon junctions (introns). The dotted arcs indicate no junction-reads spanning the intron (3S = 0) and solid arcs indicate 3S > 0. The transcripts labeled beginning with ‘LOC_Os’ indicate annotated transcripts by reference genome annotation and the ones beginning with “MSTRG” are transcripts assembled by StringTie. ([Yu et al., 2021](#citation); https://doi.org/10.1111/nph.17189)
 
 ## Installation
 
@@ -22,18 +26,14 @@ Start R (>= 4.0) and run:
 ```{r,eval=FALSE}
 if (!requireNamespace("BiocManager", quietly = TRUE))
     install.packages("BiocManager")
-
-# The following initializes usage of Bioc devel
-BiocManager::install(version='devel')
-
 BiocManager::install("vasp", build_vignettes=TRUE)
 vignette('vasp')
 ```
 
-If you use an older version of R (>=3.5.0), enter:
+If you use an older version of R (>= 3.5), enter:
 
 ```{r,eval=FALSE}
-BiocManager::install("yuhuihui2011/vasp@R3", build_vignettes=TRUE)
+BiocManager::install("yuhuihui2011/vasp", build_vignettes=TRUE)
 vignette('vasp')
 ```
 
@@ -134,3 +134,9 @@ Detailed usage examples are available in the [Vignette](https://github.com/yuhui
 ## License
 
 The code is freely available under the GPL (>= 2.0) license
+
+## Citation
+
+Yu, H., Du, Q., Campbell, M., Yu, B., Walia, H. and Zhang, C. (2021), Genome‐Wide Discovery of Natural Variation in Pre‐mRNA Splicing and Prioritizing Causal Alternative Splicing to Salt Stress Response in Rice. ***New Phytol***. https://doi.org/10.1111/nph.17189
+<br />
+<br />

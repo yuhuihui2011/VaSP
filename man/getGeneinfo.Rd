@@ -4,8 +4,8 @@
 \alias{getGeneinfo}
 \title{Get Gene Informaton from a ballgown object}
 \usage{
-getGeneinfo(genes = NA, bg, chrom, start, end, samples = sampleNames(bg), 
-    trans.select = NA)
+getGeneinfo(genes = NA, bg, chrom, start, end, samples = sampleNames(bg),
+            trans.select = NA)
 }
 \arguments{
 \item{genes}{a character vector specifying gene IDs in 'bg'. Any values other
@@ -50,7 +50,7 @@ color = rep(SushiColors(2)(length(trans)), trans)
 
 par(mar=c(3,1,1,1))
 plotGenes(geneinfo, chrom, chromstart, chromend, col = color, bheight = 0.2,
-    bentline = FALSE, plotgenetype = 'arrow', labeloffset = 0.5)
+            bentline = FALSE, plotgenetype = 'arrow', labeloffset = 0.5)
 labelgenome(chrom, chromstart , chromend, side = 1, n = 5, scale = 'Kb')
 }
 \seealso{

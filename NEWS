@@ -1,5 +1,14 @@
 vasp News
 
+Changes in version 1.2.1 (2020-10-28)
++ Added the citation and improved some codes.
+
+Changes in version 1.2.0 (2020-10-28)
++ Increased to version 1.2.0 due to the release of Bioconductor 3.12.
+
+Changes in version 1.1.0 (2020-04-28)
++ Increased to version 1.1.0 due to the release of Bioconductor 3.11.
+
 Changes in version 0.99.23 (2020-03-25)
 + Released to the 'Devel' version of Bioconductor (accepted and builded)
 
