@@ -1,10 +1,6 @@
 Package: vasp
 Type: Package
-<<<<<<< HEAD
-Version: 1.2.1
-Title: VaSP: Quantification and Visualization of Variations of Splicing in Population
-=======
-Version: 1.3.0
+Version: 1.3.1
 Title: Quantification and Visulization of Variations of Splicing in Population
 Authors@R: c(person("Huihui", "Yu", role = c("aut", "cre"),
                     email = "yuhuihui2011@foxmail.com"),
