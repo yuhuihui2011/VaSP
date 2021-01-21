@@ -1,6 +1,6 @@
 Package: vasp
 Type: Package
-Version: 1.3.3
+Version: 1.2.3
 Title: Quantification and Visualization of Variations of Splicing in Population
 Author: Huihui Yu, Qian Du, Chi Zhang
 Maintainer: Huihui Yu <yuhuihui2011@foxmail.com>
