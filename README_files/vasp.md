@@ -1,3 +1,6 @@
+<img src="vasp_logo_s.jpg" align='right' alt="logo" width="120" 
+ style="vertical-align:middle;margin:20px" />
+ 
 # VaSP: Quantification and Visulization of <br>Variations of Splicing in Population
 *by [Huihui Yu](https://github.com/yuhuihui2011), [Qian Du](https://github.com/purod) and Chi Zhang*
 
@@ -20,9 +23,9 @@
 
 **VaSP** is an R package for discovery of genome-wide variable alternative splicing events from short-read RNA-seq data and visualizations of gene splicing information for publication-quality multi-panel figures.
 
-![](https://github.com/yuhuihui2011/vasp/blob/master/README_files/vasp.png)
+![](vasp.png)
 
-**Figure 1. Overview of VaSP**. **(A)**. The workflow and functions of [VaSP](https://github.com/yuhuihui2011/vasp). The input is an R data object ballgown (see `?ballgown`) produced by a standard RNA-seq data analysis protocol, including mapping with HISAT, assembling with StringTie, and collecting expression information with R package [Ballgown](https://github.com/alyssafrazee/ballgown). VaSP calculates the Single Splicing Strength (3S) scores for all splicing junctions in the genome (`?spliceGenome`) or in a particular gene (`?spliceGene`), identifies genotype-specific splicing (GSS) events (`?BMfinder`), and displays differential splicing information (`?splicePlot`). The 3S scores can be also used for other analyses, such as differential splicing analysis or splicing QTL identification. **(B)**. VaSP estimates 3S scores based on junction-read counts normalized by gene-level read coverage. In this example, VaSP calculates the splicing scores of four introns in a gene X with two transcript isoforms. Only the fourth intron is a full usage intron excised by both the two isoforms and the other three are alternative donor site (AltD) sites or Intron Retention (IntronR), respectively. **(C)**. Visualization of splicing information in gene MSTRG.183 (LOC_Os01g03070), whole gene without splicing scores. **(D)**. Visualization of differential splicing region of the gene MSTRG.183 with splicing score displaying. In C and D, the y-axes are read depths and the arcs (lines between exons) indicate exon-exon junctions (introns). The dotted arcs indicate no junction-reads spanning the intron (3S = 0) and solid arcs indicate 3S > 0. The transcripts labeled beginning with ‘LOC_Os’ indicate annotated transcripts by reference genome annotation and the ones beginning with “MSTRG” are transcripts assembled by StringTie. ([Yu et al., 2021](#2-citation); https://doi.org/10.1111/nph.17189)
+**Figure 1. Overview of VaSP**. **(A)**. The workflow and functions of [VaSP](https://github.com/yuhuihui2011/vasp). The input is an R data object ballgown (see `?ballgown`) produced by a standard RNA-seq data analysis protocol, including mapping with HISAT, assembling with StringTie, and collecting expression information with R package [Ballgown](https://github.com/alyssafrazee/ballgown). VaSP calculates the Single Splicing Strength (3S) scores for all splicing junctions in the genome (`?spliceGenome`) or in a particular gene (`?spliceGene`), identifies genotype-specific splicing (GSS) events (`?BMfinder`), and displays differential splicing information (`?splicePlot`). The 3S scores can be also used for other analyses, such as differential splicing analysis or splicing QTL identification. **(B)**. VaSP estimates 3S scores based on junction-read counts normalized by gene-level read coverage. In this example, VaSP calculates the splicing scores of four introns in a gene X with two transcript isoforms. Only the fourth intron is a full usage intron excised by both the two isoforms and the other three are alternative donor site (AltD) sites or Intron Retention (IntronR), respectively. **(C)**. Visualization of splicing information in gene MSTRG.183 (LOC_Os01g03070), whole gene without splicing scores. **(D)**. Visualization of differential splicing region of the gene MSTRG.183 with splicing score displaying. In C and D, the y-axes are read depths and the arcs (lines between exons) indicate exon-exon junctions (introns). The dotted arcs indicate no junction-reads spanning the intron (3S = 0) and solid arcs indicate 3S > 0. The transcripts labeled beginning with ‘LOC_Os’ indicate annotated transcripts by reference genome annotation and the ones beginning with “MSTRG” are transcripts assembled by StringTie. ([Yu et al., 2021](#2-citation))
 
 ## 2. Citation
 ---------------
@@ -129,7 +132,7 @@ information.
                start = 1179000, end = 1179300)
     #> [1] "yes"
 
-![](https://github.com/yuhuihui2011/vasp/blob/master/README_files/splicePlot-1.png)
+![](splicePlot-1.png)
 
 ## 6. Functions
 ------------
@@ -177,7 +180,7 @@ data.frame in bedgraph file format which can be used as input for
     mtext("Depth", side = 2, line = 2.5, cex = 1.2, font = 2)
     labelgenome("Chr1", 1171800, 1179400, side = 1, scipen = 20, n = 5, scale = "Kb")
 
-![](https://github.com/yuhuihui2011/vasp/blob/master/README_files/plotBedgraph-1.png)
+![](plotBedgraph-1.png)
 
 ### 6.2 getGeneinfo
 
@@ -214,7 +217,7 @@ as input for `plotGenes` in the **SuShi** package
     #> [1] "yes"
     labelgenome(chrom, chromstart , chromend, side = 1, n = 5, scale = "Kb")
 
-![](https://github.com/yuhuihui2011/vasp/blob/master/README_files/plotGenes-1.png)
+![](plotGenes-1.png)
 
 ### 6.3 spliceGene
 
@@ -360,14 +363,14 @@ information in a gene region. This function is a wrapper of `getDepth`,
     splicePlot(rice.bg, samples, bam.dir, gene = "MSTRG.183", junc.text = FALSE, bheight = 0.2)
     #> [1] "yes"
 
-![](https://github.com/yuhuihui2011/vasp/blob/master/README_files/unnamed-chunk-9-1.png)
+![](unnamed-chunk-9-1.png)
 
 
     ## plot the alternative splicing region with junction splicing scores
     splicePlot(rice.bg, samples, bam.dir, gene = "MSTRG.183", start = 1179000)
     #> [1] "yes"
 
-![](https://github.com/yuhuihui2011/vasp/blob/master/README_files/unnamed-chunk-9-2.png)
+![](unnamed-chunk-9-2.png)
 
 If the bam files are provided (`bam.dir` is not NA), the read depth for
 each sample is plotted. Otherwise (`bam.dir=NA`), the coserved exons of
@@ -381,7 +384,7 @@ label with junction read counts.
     splicePlot(rice.bg, samples, bam.dir, gene = "MSTRG.183", junc.type = 'count', start = 1179000)
     #> [1] "yes"
 
-![](https://github.com/yuhuihui2011/vasp/blob/master/README_files/unnamed-chunk-10-1.png)
+![](unnamed-chunk-10-1.png)
 
 There are other more options to modify the plot, please see the function
 `?splicePlot` for details.

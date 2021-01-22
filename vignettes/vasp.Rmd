@@ -55,8 +55,7 @@ splicing score displaying. In C and D, the y-axes are read depths and the arcs
 indicate no junction-reads spanning the intron (3S = 0) and solid arcs indicate 
 3S > 0. The transcripts labeled beginning with ‘LOC_Os’ indicate annotated 
 transcripts by reference genome annotation and the ones beginning with “MSTRG” 
-are transcripts assembled by StringTie. ([Yu et al., 2021](#citation); 
-https://doi.org/10.1111/nph.17189)
+are transcripts assembled by StringTie. ([Yu et al., 2021](#citation))
 
 ## 2. Citation
 
