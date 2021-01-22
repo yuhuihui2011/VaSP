@@ -1,4 +1,4 @@
-#' Rice Ballgown Object
+#' Rice ballgown object
 #'
 #' Small ballgown object created with a subset of rice RNAseq data,
 #' for demonstration purposes
