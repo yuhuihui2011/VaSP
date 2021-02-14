@@ -23,7 +23,7 @@ a data.frame in bedgraph file format which can be used as input for
 Get read depth from a BAM file (in bedgraph format)
 }
 \examples{
-path <- system.file('extdata',package='vasp')
+path <- system.file('extdata',package='VaSP')
 bam_files<-list.files(path,'bam$')
 bam_files
 

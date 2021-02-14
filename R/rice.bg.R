@@ -15,8 +15,8 @@
 #' (\href{https://doi.org/10.1111/nph.17189}{Yu et al., 2021}).
 #' @references
 #' Yu, H., Du, Q., Campbell, M., Yu, B., Walia, H. and Zhang, C. (2021), 
-#' Genome‐Wide Discovery of Natural Variation in Pre‐mRNA Splicing and 
-#' Prioritizing Causal Alternative Splicing to Salt Stress Response in Rice. 
+#' Genome‐wide discovery of natural variation in pre‐mRNA splicing and 
+#' prioritising causal alternative splicing to salt stress response in rice. 
 #' New Phytol. <https://doi.org/10.1111/nph.17189>
 #' 
 #' Bolger, A.M., Lohse, M., and Usadel, B. (2014). Trimmomatic: a flexible 

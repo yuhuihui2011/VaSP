@@ -12,7 +12,7 @@
 #' @export getDepth
 #' @seealso \code{\link{splicePlot}}
 #' @examples
-#' path <- system.file('extdata',package='vasp')
+#' path <- system.file('extdata',package='VaSP')
 #' bam_files<-list.files(path,'bam$')
 #' bam_files
 #'

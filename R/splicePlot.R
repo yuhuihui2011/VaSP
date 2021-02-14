@@ -45,7 +45,7 @@
 #' rice.bg
 #'
 #' samples <- paste('Sample', c('027','102','237'),sep='_')
-#' bam.dir <- system.file('extdata',package = 'vasp')
+#' bam.dir <- system.file('extdata',package = 'VaSP')
 #'
 #' ## plot the whole gene region
 #' splicePlot(rice.bg,samples,bam.dir,gene='MSTRG.183',bheight=0.2)

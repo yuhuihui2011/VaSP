@@ -8,7 +8,7 @@ output:
     rmarkdown::html_vignette:
         toc: true 
 vignette: >
-    %\VignetteIndexEntry{Variations of Splicing in Population}
+    %\VignetteIndexEntry{user guide}
     %\VignetteEngine{knitr::rmarkdown}
     %\VignetteEncoding{UTF-8}
 ---
@@ -28,11 +28,11 @@ splicing events from short-read RNA-seq data and visualizations of gene
 splicing information for publication-quality multi-panel figures.
 
 ```{r echo=FALSE, out.width=700}
-knitr::include_graphics('../README_files/vasp.png')
+knitr::include_graphics('../README_files/VaSP.png')
 ```
 
 **Figure 1. Overview of VaSP**. **(A)**. The workflow and functions of
-[VaSP](https://github.com/yuhuihui2011/vasp). The input is an R data object 
+[VaSP](https://github.com/yuhuihui2011/VaSP). The input is an R data object 
 ballgown (see `?ballgown`) produced by a standard RNA-seq data analysis 
 protocol, including mapping with HISAT, assembling with StringTie, and 
 collecting expression information with R package 
@@ -60,8 +60,8 @@ are transcripts assembled by StringTie. ([Yu et al., 2021](#citation))
 ## 2. Citation
 
 Yu, H., Du, Q., Campbell, M., Yu, B., Walia, H. and Zhang, C. (2021), 
-Genome‐Wide Discovery of Natural Variation in Pre‐mRNA Splicing and 
-Prioritizing Causal Alternative Splicing to Salt Stress Response in Rice. 
+Genome‐wide discovery of natural variation in pre‐mRNA splicing and prioritising
+causal alternative splicing to salt stress response in rice. 
 ***New Phytol***. https://doi.org/10.1111/nph.17189
 
 ## 3. Installation
@@ -71,15 +71,15 @@ Start R (>= 4.0) and run:
 ```{r,eval=FALSE}
 if (!requireNamespace("BiocManager", quietly = TRUE))
     install.packages("BiocManager")
-BiocManager::install("vasp", build_vignettes=TRUE)
-vignette('vasp')
+BiocManager::install("VaSP")
+vignette('VaSP')
 ```
 
 If you use an older version of R (>= 3.5), enter:
 
 ```{r,eval=FALSE}
-BiocManager::install("yuhuihui2011/vasp", build_vignettes=TRUE)
-vignette('vasp')
+BiocManager::install("yuhuihui2011/VaSP", build_vignettes=TRUE)
+vignette('VaSP')
 ```
 
 ## 4. Data input
@@ -92,9 +92,9 @@ creating Ballgown objects. The object can be stored in a `.RDate` file by
 HISAT2+StringTie output
 
 ```{r,eval=FALSE}
-library(vasp)
+library(VaSP)
 ?ballgown
-path<-system.file('extdata', package='vasp')
+path<-system.file('extdata', package='VaSP')
 rice.bg<-ballgown(samples = list.dirs(path = path,recursive = F) )
 ```
 
@@ -105,7 +105,7 @@ Calculate 3S (Single Splicing Strength) scores, find GSS
 
 * Calculating 3S scores:
 ```{r}
-library(vasp)
+library(VaSP)
 data(rice.bg)
 ?rice.bg
 rice.bg
@@ -144,7 +144,7 @@ Get read depth from a BAM file (in bedgraph format) and return a data.frame in
 bedgraph file format which can be used as input for `plotBedgraph` in 
 the **SuShi** package.
 ```{r plotBedgraph, fig.height=3, fig.width=7}
-path <- system.file("extdata", package = "vasp")
+path <- system.file("extdata", package = "VaSP")
 bam_files <- list.files(path, "*.bam$")
 bam_files
 
@@ -235,7 +235,7 @@ gene region. This function is a wrapper of `getDepth`, `getGeneinfo`,
 `spliceGene`, `plotBedgraph` and `plotGenes`.
 ```{r, fig.width=7, fig.height=4}
 samples <- paste("Sample", c("027", "102", "237"), sep = "_")
-bam.dir <- system.file("extdata", package = "vasp")
+bam.dir <- system.file("extdata", package = "VaSP")
 
 ## plot the whole gene region without junction lables
 splicePlot(rice.bg, samples, bam.dir, gene = "MSTRG.183", junc.text = FALSE, 

@@ -1,6 +1,6 @@
 bibentry(
     bibtype = "Article",
-    title = "Genome‐Wide Discovery of Natural Variation in Pre‐mRNA Splicing and Prioritizing Causal Alternative Splicing to Salt Stress Response in Rice",
+    title = "Genome‐wide discovery of natural variation in pre‐mRNA splicing and prioritising causal alternative splicing to salt stress response in rice",
     author = c(
         person("Huihui", "Yu"),
         person("Qian", "Du"),
@@ -10,7 +10,7 @@ bibentry(
         person("Chi", "Zhang")),
     journal = "New Phytologist",
     year = "2021",
-    #month = "Jun",
+    month = "Jan",
     #volume = "",
     #pages = "",
     doi = "10.1111/nph.17189"

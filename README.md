@@ -1,10 +1,10 @@
-<img src="README_files/vasp_logo_s.jpg" align='right' alt="logo" width="120" 
+<img src="README_files/VaSP_logo_s.jpg" align='right' alt="logo" width="120" 
  style="vertical-align:middle;margin:20px" />
 
 # VaSP: Quantification and Visualization of Variations of Splicing in Population 
 
 <!-- badges: start -->
-[ Release ](http://bioconductor.org/packages/release/bioc/html/vasp.html) ![in Bioc](http://bioconductor.org/shields/years-in-bioc/vasp.svg) ![platform](http://bioconductor.org/shields/availability/3.12/vasp.svg) [![Bioconductor-release Build Status](http://bioconductor.org/shields/build/release/bioc/vasp.svg)](http://bioconductor.org/checkResults/release/bioc-LATEST/vasp) ![update](http://bioconductor.org/shields/lastcommit/release/bioc/vasp.svg) 
+[ Release ](http://bioconductor.org/packages/release/bioc/html/VaSP.html) ![in Bioc](http://bioconductor.org/shields/years-in-bioc/VaSP.svg) ![platform](http://bioconductor.org/shields/availability/3.12/VaSP.svg) [![Bioconductor-release Build Status](http://bioconductor.org/shields/build/release/bioc/VaSP.svg)](http://bioconductor.org/checkResults/release/bioc-LATEST/VaSP) ![update](http://bioconductor.org/shields/lastcommit/release/bioc/VaSP.svg) 
 <!-- badges: end -->
 
 <br>
@@ -24,9 +24,9 @@
 
 **VaSP** is an R package for discovery of genome-wide variable alternative splicing events from short-read RNA-seq data and visualizations of gene splicing information for publication-quality multi-panel figures.
 
-![](README_files/vasp.png)
+![](README_files/VaSP.png)
 
-**Figure 1. Overview of VaSP**. **(A)**. The workflow and functions of [VaSP](https://github.com/yuhuihui2011/vasp). The input is an R data object ballgown (see `?ballgown`) produced by a standard RNA-seq data analysis protocol, including mapping with HISAT, assembling with StringTie, and collecting expression information with R package [Ballgown](https://github.com/alyssafrazee/ballgown). VaSP calculates the Single Splicing Strength (3S) scores for all splicing junctions in the genome (`?spliceGenome`) or in a particular gene (`?spliceGene`), identifies genotype-specific splicing (GSS) events (`?BMfinder`), and displays differential splicing information (`?splicePlot`). The 3S scores can be also used for other analyses, such as differential splicing analysis or splicing QTL identification. **(B)**. VaSP estimates 3S scores based on junction-read counts normalized by gene-level read coverage. In this example, VaSP calculates the splicing scores of four introns in a gene X with two transcript isoforms. Only the fourth intron is a full usage intron excised by both the two isoforms and the other three are alternative donor site (AltD) sites or Intron Retention (IntronR), respectively. **(C)**. Visualization of splicing information in gene MSTRG.183 (LOC_Os01g03070), whole gene without splicing scores. **(D)**. Visualization of differential splicing region of the gene MSTRG.183 with splicing score displaying. In C and D, the y-axes are read depths and the arcs (lines between exons) indicate exon-exon junctions (introns). The dotted arcs indicate no junction-reads spanning the intron (3S = 0) and solid arcs indicate 3S > 0. The transcripts labeled beginning with ‘LOC_Os’ indicate annotated transcripts by reference genome annotation and the ones beginning with “MSTRG” are transcripts assembled by StringTie. ([Yu et al., 2021](#citation))
+**Figure 1. Overview of VaSP**. **(A)**. The workflow and functions of [VaSP](https://github.com/yuhuihui2011/VaSP). The input is an R data object ballgown (see `?ballgown`) produced by a standard RNA-seq data analysis protocol, including mapping with HISAT, assembling with StringTie, and collecting expression information with R package [Ballgown](https://github.com/alyssafrazee/ballgown). VaSP calculates the Single Splicing Strength (3S) scores for all splicing junctions in the genome (`?spliceGenome`) or in a particular gene (`?spliceGene`), identifies genotype-specific splicing (GSS) events (`?BMfinder`), and displays differential splicing information (`?splicePlot`). The 3S scores can be also used for other analyses, such as differential splicing analysis or splicing QTL identification. **(B)**. VaSP estimates 3S scores based on junction-read counts normalized by gene-level read coverage. In this example, VaSP calculates the splicing scores of four introns in a gene X with two transcript isoforms. Only the fourth intron is a full usage intron excised by both the two isoforms and the other three are alternative donor site (AltD) sites or Intron Retention (IntronR), respectively. **(C)**. Visualization of splicing information in gene MSTRG.183 (LOC_Os01g03070), whole gene without splicing scores. **(D)**. Visualization of differential splicing region of the gene MSTRG.183 with splicing score displaying. In C and D, the y-axes are read depths and the arcs (lines between exons) indicate exon-exon junctions (introns). The dotted arcs indicate no junction-reads spanning the intron (3S = 0) and solid arcs indicate 3S > 0. The transcripts labeled beginning with ‘LOC_Os’ indicate annotated transcripts by reference genome annotation and the ones beginning with “MSTRG” are transcripts assembled by StringTie. ([Yu et al., 2021](#citation))
 
 ## Installation
 
@@ -35,15 +35,15 @@ Start R (>= 4.0) and run:
 ```{r,eval=FALSE}
 if (!requireNamespace("BiocManager", quietly = TRUE))
     install.packages("BiocManager")
-BiocManager::install("vasp", build_vignettes=TRUE)
-vignette('vasp')
+BiocManager::install("VaSP")
+vignette('VaSP')
 ```
 
 If you use an older version of R (>= 3.5), enter:
 
 ```{r,eval=FALSE}
-BiocManager::install("yuhuihui2011/vasp", build_vignettes=TRUE)
-vignette('vasp')
+BiocManager::install("yuhuihui2011/VaSP", build_vignettes=TRUE)
+vignette('VaSP')
 ```
 
 ## Data input
@@ -51,9 +51,9 @@ vignette('vasp')
 Users need to follow the manual of R package Ballgown (<https://github.com/alyssafrazee/ballgown>) to creat a ballgown object as an input for the VaSP package. See `?ballgown` for detailed information on creating Ballgown objects. The object can be stored in a `.RDate` file by `save()` . Here is an example of constructing rice.bg object from HISAT2+StringTie output
 
 ```{r,eval=FALSE}
-library(vasp)
+library(VaSP)
 ?ballgown
-path<-system.file('extdata', package='vasp')
+path<-system.file('extdata', package='VaSP')
 rice.bg<-ballgown(samples = list.dirs(path = path,recursive = F) )
 ```
 
@@ -65,7 +65,7 @@ Calculate 3S (Single Splicing Strength) scores, find GSS (genotype-specific spli
 
 <!-- -->
 
-    library(vasp)
+    library(VaSP)
     #> Loading required package: ballgown
     #> 
     #> Attaching package: 'ballgown'
@@ -132,7 +132,7 @@ Calculate 3S (Single Splicing Strength) scores, find GSS (genotype-specific spli
 
 ## Features
 
-Detailed usage examples are available in the [Vignette](README_files/vasp.md).
+Detailed usage examples are available in the [Vignette](README_files/VaSP.md).
 
 ## Contributors
 
@@ -146,6 +146,8 @@ The code is freely available under the GPL (>= 2.0) license
 
 ## Citation
 
-Yu, H., Du, Q., Campbell, M., Yu, B., Walia, H. and Zhang, C. (2021), Genome‐Wide Discovery of Natural Variation in Pre‐mRNA Splicing and Prioritizing Causal Alternative Splicing to Salt Stress Response in Rice. ***New Phytol***. https://doi.org/10.1111/nph.17189
+Yu, H., Du, Q., Campbell, M., Yu, B., Walia, H. and Zhang, C. (2021), 
+Genome‐wide discovery of natural variation in pre‐mRNA splicing and prioritising
+causal alternative splicing to salt stress response in rice. ***New Phytol***. https://doi.org/10.1111/nph.17189
 <br />
 <br />
