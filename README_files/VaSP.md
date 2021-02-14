@@ -42,7 +42,7 @@ Start R and run:
 
     if (!requireNamespace("BiocManager", quietly=TRUE))
         install.packages("BiocManager")
-    BBiocManager::install("VaSP",build_vignettes=TRUE)
+    BBiocManager::install("VaSP")
     vignette('VaSP')
 
 ## 4. Data input
