@@ -1,4 +1,7 @@
-vasp News
+VaSP News
+
+Changes in version 1.2.5 (2021-02-14)
++ Changed package name to VaSP from vasp.
 
 Changes in version 1.2.1 (2021-01-16)
 + Added the citation and improved some codes.
