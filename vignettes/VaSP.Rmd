@@ -1,0 +1,270 @@
+---
+title: 
+    "VaSP: Quantification and Visualization of 
+    <u>Va</u>riations of <u>S</u>plicing in <u>P</u>opulation"
+author: "*Huihui Yu, Qian Du and Chi Zhang*"
+date: "`r Sys.Date()`"
+output: 
+    rmarkdown::html_vignette:
+        toc: true 
+vignette: >
+    %\VignetteIndexEntry{user guide}
+    %\VignetteEngine{knitr::rmarkdown}
+    %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include = FALSE}
+options(tinytex.verbose = TRUE)
+knitr::opts_chunk$set(
+    collapse = TRUE,
+    comment = "#>"
+)
+```
+
+## 1. Introduction {.tabset .tabset-fade .tabset-pills}
+
+**VaSP** is an R package for discovery of genome-wide variable alternative 
+splicing events from short-read RNA-seq data and visualizations of gene 
+splicing information for publication-quality multi-panel figures.
+
+```{r echo=FALSE, out.width=700}
+knitr::include_graphics('../README_files/VaSP.png')
+```
+
+**Figure 1. Overview of VaSP**. **(A)**. The workflow and functions of
+[VaSP](https://github.com/yuhuihui2011/VaSP). The input is an R data object 
+ballgown (see `?ballgown`) produced by a standard RNA-seq data analysis 
+protocol, including mapping with HISAT, assembling with StringTie, and 
+collecting expression information with R package 
+[Ballgown](https://github.com/alyssafrazee/ballgown). VaSP calculates the 
+Single Splicing Strength (3S) scores for all splicing junctions in the 
+genome (`?spliceGenome`) or in a particular gene (`?spliceGene`), identifies 
+genotype-specific splicing (GSS) events (`?BMfinder`), and displays 
+differential splicing information (`?splicePlot`). The 3S scores can be also 
+used for other analyses, such as differential splicing analysis or splicing QTL 
+identification. **(B)**. VaSP estimates 3S scores based on junction-read counts 
+normalized by gene-level read coverage. In this example, VaSP calculates the 
+splicing scores of four introns in a gene X with two transcript isoforms. 
+Only the fourth intron is a full usage intron excised by both the two isoforms 
+and the other three are alternative donor site (AltD) sites or Intron Retention 
+(IntronR), respectively. **(C)**. Visualization of splicing information in gene 
+MSTRG.183 (LOC_Os01g03070), whole gene without splicing scores. **(D)**. 
+Visualization of differential splicing region of the gene MSTRG.183 with 
+splicing score displaying. In C and D, the y-axes are read depths and the arcs 
+(lines between exons) indicate exon-exon junctions (introns). The dotted arcs 
+indicate no junction-reads spanning the intron (3S = 0) and solid arcs indicate 
+3S > 0. The transcripts labeled beginning with ‘LOC_Os’ indicate annotated 
+transcripts by reference genome annotation and the ones beginning with “MSTRG” 
+are transcripts assembled by StringTie. ([Yu et al., 2021](#citation))
+
+## 2. Citation
+
+Yu, H., Du, Q., Campbell, M., Yu, B., Walia, H. and Zhang, C. (2021), 
+Genome‐wide discovery of natural variation in pre‐mRNA splicing and prioritising
+causal alternative splicing to salt stress response in rice. 
+***New Phytol***. https://doi.org/10.1111/nph.17189
+
+## 3. Installation
+
+Start R (>= 4.0) and run:
+
+```{r,eval=FALSE}
+if (!requireNamespace("BiocManager", quietly = TRUE))
+    install.packages("BiocManager")
+BiocManager::install("VaSP")
+vignette('VaSP')
+```
+
+If you use an older version of R (>= 3.5), enter:
+
+```{r,eval=FALSE}
+BiocManager::install("yuhuihui2011/VaSP", build_vignettes=TRUE)
+vignette('VaSP')
+```
+
+## 4. Data input
+
+Users need to follow the manual of R package Ballgown 
+(<https://github.com/alyssafrazee/ballgown>) to create a ballgown object as an 
+input for the VaSP package. See `?ballgown` for detailed information on 
+creating Ballgown objects. The object can be stored in a `.RDate` file by 
+`save()` . Here is an example of constructing rice.bg object from 
+HISAT2+StringTie output
+
+```{r,eval=FALSE}
+library(VaSP)
+?ballgown
+path<-system.file('extdata', package='VaSP')
+rice.bg<-ballgown(samples = list.dirs(path = path,recursive = F) )
+```
+
+## 5. Quick start
+
+Calculate 3S (Single Splicing Strength) scores, find GSS 
+(genotype-specific splicing) events and display the splicing information.
+
+* Calculating 3S scores:
+```{r}
+library(VaSP)
+data(rice.bg)
+?rice.bg
+rice.bg
+score<-spliceGene(rice.bg, gene="MSTRG.183", junc.type = "score")
+tail(round(score,2),2)
+```
+* Discovering GSS:
+```{r}
+gss <- BMfinder(score, cores = 1) 
+gss
+```
+* Extracing intron information
+```{r}
+gss_intron<-structure(rice.bg)$intron
+(gss_intron<-gss_intron[gss_intron$id%in%rownames(gss)])
+range(gss_intron)
+```
+* Showing the splicing information
+```{r splicePlot, fig.width=7, fig.height=4}
+splicePlot(rice.bg,gene='MSTRG.183',samples = sampleNames(rice.bg)[c(1,3,5)],
+    start = 1179000, end = 1179300)
+```
+
+## 6. Functions
+Currently, there are 6 functions in VaSP:  
+***getDepth***: Get read depth from a BAM file (in bedgraph format)  
+***getGeneinfo***: Get gene informaton from a ballgown object  
+***spliceGene***: Calculate 3S scores for one gene  
+***spliceGenome***: Calculate genome-wide splicing scores  
+***BMfinder***: Discover bimodal distrubition features  
+***splicePlot***: Visualization of read coverage, splicing information and 
+gene information in a gene region
+
+### 6.1 getDepth
+Get read depth from a BAM file (in bedgraph format) and return a data.frame in 
+bedgraph file format which can be used as input for `plotBedgraph` in 
+the **SuShi** package.
+```{r plotBedgraph, fig.height=3, fig.width=7}
+path <- system.file("extdata", package = "VaSP")
+bam_files <- list.files(path, "*.bam$")
+bam_files
+
+depth <- getDepth(file.path(path, bam_files[1]), "Chr1", start = 1171800, 
+                end = 1179400)
+head(depth)
+
+library(Sushi)
+par(mar=c(3,5,1,1))
+plotBedgraph(depth, "Chr1", chromstart = 1171800, chromend = 1179400,yaxt = "s")
+mtext("Depth", side = 2, line = 2.5, cex = 1.2, font = 2)
+labelgenome("Chr1", 1171800, 1179400, side = 1, scipen = 20, n = 5,scale = "Kb")
+```
+
+### 6.2 getGeneinfo
+Get gene informaton from a ballgown object by genes or by genomic regions and 
+return a data.frame in bed-like file format that can be used as input 
+for `plotGenes` in the **SuShi** package  
+```{r plotGenes, fig.height=4,fig.width=7}
+unique(geneIDs(rice.bg))
+
+gene_id <- c("MSTRG.181", "MSTRG.182", "MSTRG.183")
+geneinfo <- getGeneinfo(genes = gene_id, rice.bg)
+trans <- table(geneinfo$name)  # show how many exons each transcript has
+trans
+
+chrom = geneinfo$chrom[1]
+chromstart = min(geneinfo$start) - 1500
+chromend = max(geneinfo$stop) + 1000
+color = rep(SushiColors(2)(length(trans)), trans)
+
+par(mar=c(3,1,1,1))
+p<-plotGenes(geneinfo, chrom, chromstart, chromend, col = color, bheight = 0.2, 
+            bentline = FALSE, plotgenetype = "arrow", labeloffset = 0.5)
+labelgenome(chrom, chromstart , chromend, side = 1, n = 5, scale = "Kb")
+```
+
+### 6.3 spliceGene
+Calculate 3S Scores from ballgown object for a given gene. This function can 
+only calculate one gene. Please use function `spliceGenome` to obtain 
+genome-wide 3S scores.  
+```{r}
+rice.bg
+head(geneIDs(rice.bg))
+
+score <- spliceGene(rice.bg, "MSTRG.183", junc.type = "score")
+count <- spliceGene(rice.bg, "MSTRG.183", junc.type = "count")
+
+## compare
+tail(score)
+tail(count)
+
+## get intron structrue
+intron <- structure(rice.bg)$intron
+intron[intron$id %in% rownames(score)]
+```
+
+### 6.4 spliceGenome
+Calculate 3S scores from ballgown objects for all genes and return a list of 
+two elements: "score' is a matrix of intron 3S scores with intron rows and 
+sample columns and "intron" is a `GRanges` object of intron structure. 
+```{r}
+rice.bg
+
+splice <- spliceGenome(rice.bg, gene.select = NA, intron.select = NA)
+names(splice)
+
+head(splice$score)
+splice$intron
+```
+
+### 6.5 BMfinder
+Find bimodal distrubition features and divide the samples into 2 groups by 
+k-means clustering and return a matrix with feature rows and sample columns.  
+```{r}
+score <- spliceGene(rice.bg, "MSTRG.183", junc.type = "score")
+score <- round(score, 2)
+as <- BMfinder(score, cores = 1)  # 4 bimodal distrubition features found
+
+## compare
+as
+score[rownames(score) %in% rownames(as), ]
+```
+
+### 6.6 splicePlot
+Visualization of read coverage, splicing information and gene information in a 
+gene region. This function is a wrapper of `getDepth`, `getGeneinfo`, 
+`spliceGene`, `plotBedgraph` and `plotGenes`.
+```{r, fig.width=7, fig.height=4}
+samples <- paste("Sample", c("027", "102", "237"), sep = "_")
+bam.dir <- system.file("extdata", package = "VaSP")
+
+## plot the whole gene region without junction lables
+splicePlot(rice.bg, samples, bam.dir, gene = "MSTRG.183", junc.text = FALSE, 
+            bheight = 0.2)
+
+## plot the alternative splicing region with junction splicing scores
+splicePlot(rice.bg, samples, bam.dir, gene = "MSTRG.183", start = 1179000)
+```
+
+If the bam files are provided (`bam.dir` is not NA), the read depth for each 
+sample is plotted. Otherwise (`bam.dir=NA`), the conserved exons of the samples 
+are displayed by rectangles (an example is the figure in **4. Quick start**). 
+And by default (`junc.type = 'score'`, `junc.text = TRUE`), the junctions 
+(represented by arcs) are labeled with splicing scores. You can change the 
+argument `junc.text = FALSE` to unlabel the junctions or change the argument 
+`junc.type = 'count'` to label with junction read counts.
+
+```{r, fig.width=7, fig.height=4}
+splicePlot(rice.bg, samples, bam.dir, gene = "MSTRG.183", junc.type = 'count', 
+            start = 1179000)
+```
+
+There are other more options to modify the plot, please see the function 
+`?splicePlot` for details.
+
+
+## 7. Session Information
+```{r}
+sessionInfo()
+```
+
+
