@@ -148,6 +148,7 @@ The code is freely available under the GPL (>= 2.0) license
 
 Yu, H., Du, Q., Campbell, M., Yu, B., Walia, H. and Zhang, C. (2021), 
 Genome‐wide discovery of natural variation in pre‐mRNA splicing and prioritising
-causal alternative splicing to salt stress response in rice. ***New Phytol***. https://doi.org/10.1111/nph.17189
+causal alternative splicing to salt stress response in rice. ***New Phytol***.
+https://doi.org/10.1111/nph.17189
 <br />
 <br />

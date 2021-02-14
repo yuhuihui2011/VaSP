@@ -1,4 +1,4 @@
-<img src="vasp_logo_s.jpg" align='right' alt="logo" width="120" 
+<img src="VaSP_logo_s.jpg" align='right' alt="logo" width="120" 
  style="vertical-align:middle;margin:20px" />
  
 # VaSP: Quantification and Visulization of <br>Variations of Splicing in Population
@@ -23,14 +23,17 @@
 
 **VaSP** is an R package for discovery of genome-wide variable alternative splicing events from short-read RNA-seq data and visualizations of gene splicing information for publication-quality multi-panel figures.
 
-![](vasp.png)
+![](VaSP.png)
 
 **Figure 1. Overview of VaSP**. **(A)**. The workflow and functions of [VaSP](https://github.com/yuhuihui2011/vasp). The input is an R data object ballgown (see `?ballgown`) produced by a standard RNA-seq data analysis protocol, including mapping with HISAT, assembling with StringTie, and collecting expression information with R package [Ballgown](https://github.com/alyssafrazee/ballgown). VaSP calculates the Single Splicing Strength (3S) scores for all splicing junctions in the genome (`?spliceGenome`) or in a particular gene (`?spliceGene`), identifies genotype-specific splicing (GSS) events (`?BMfinder`), and displays differential splicing information (`?splicePlot`). The 3S scores can be also used for other analyses, such as differential splicing analysis or splicing QTL identification. **(B)**. VaSP estimates 3S scores based on junction-read counts normalized by gene-level read coverage. In this example, VaSP calculates the splicing scores of four introns in a gene X with two transcript isoforms. Only the fourth intron is a full usage intron excised by both the two isoforms and the other three are alternative donor site (AltD) sites or Intron Retention (IntronR), respectively. **(C)**. Visualization of splicing information in gene MSTRG.183 (LOC_Os01g03070), whole gene without splicing scores. **(D)**. Visualization of differential splicing region of the gene MSTRG.183 with splicing score displaying. In C and D, the y-axes are read depths and the arcs (lines between exons) indicate exon-exon junctions (introns). The dotted arcs indicate no junction-reads spanning the intron (3S = 0) and solid arcs indicate 3S > 0. The transcripts labeled beginning with ‘LOC_Os’ indicate annotated transcripts by reference genome annotation and the ones beginning with “MSTRG” are transcripts assembled by StringTie. ([Yu et al., 2021](#2-citation))
 
 ## 2. Citation
 ---------------
 
-Yu, H., Du, Q., Campbell, M., Yu, B., Walia, H. and Zhang, C. (2021), Genome‐Wide Discovery of Natural Variation in Pre‐mRNA Splicing and Prioritizing Causal Alternative Splicing to Salt Stress Response in Rice. ***New Phytol***. https://doi.org/10.1111/nph.17189
+Yu, H., Du, Q., Campbell, M., Yu, B., Walia, H. and Zhang, C. (2021), 
+Genome‐wide discovery of natural variation in pre‐mRNA splicing and prioritising
+causal alternative splicing to salt stress response in rice. ***New Phytol***.
+https://doi.org/10.1111/nph.17189
 
 ## 3. Installation
 ---------------
@@ -39,8 +42,8 @@ Start R and run:
 
     if (!requireNamespace("BiocManager", quietly=TRUE))
         install.packages("BiocManager")
-    BBiocManager::install("vasp",build_vignettes=TRUE)
-    vignette('vasp')
+    BBiocManager::install("VaSP",build_vignettes=TRUE)
+    vignette('VaSP')
 
 ## 4. Data input
 -------------
@@ -52,9 +55,9 @@ information on creating Ballgown objects. The object can be stored in a
 `.RDate` file by `save()` . Here is an example of constructing rice.bg object 
 from HISAT2+StringTie output
 
-    library(vasp)
+    library(VaSP)
     ?ballgown
-    path<-system.file('extdata', package='vasp')
+    path<-system.file('extdata', package='VaSP')
     rice.bg<-ballgown(samples = list.dirs(path = path,recursive = F) )
 
 ## 5. Quick start
@@ -68,7 +71,7 @@ information.
 
 <!-- -->
 
-    library(vasp)
+    library(VaSP)
     #> Loading required package: ballgown
     #> 
     #> Attaching package: 'ballgown'
@@ -152,7 +155,7 @@ Get read depth from a BAM file (in bedgraph format) and return a
 data.frame in bedgraph file format which can be used as input for
 `plotBedgraph` in the **SuShi** package.
 
-    path <- system.file("extdata", package = "vasp")
+    path <- system.file("extdata", package = "VaSP")
     bam_files <- list.files(path, "*.bam$")
     bam_files
     #> [1] "Sample_027.bam" "Sample_102.bam" "Sample_237.bam"
@@ -357,7 +360,7 @@ information in a gene region. This function is a wrapper of `getDepth`,
     rice.bg
     #> ballgown instance with 33 transcripts and 6 samples
     samples <- paste("Sample", c("027", "102", "237"), sep = "_")
-    bam.dir <- system.file("extdata", package = "vasp")
+    bam.dir <- system.file("extdata", package = "VaSP")
 
     ## plot the whole gene region without junction lables
     splicePlot(rice.bg, samples, bam.dir, gene = "MSTRG.183", junc.text = FALSE, bheight = 0.2)
