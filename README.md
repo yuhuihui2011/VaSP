@@ -4,7 +4,7 @@
 # VaSP: Quantification and Visualization of Variations of Splicing in Population 
 
 <!-- badges: start -->
-[ Release ](http://bioconductor.org/packages/release/bioc/html/VaSP.html) ![in Bioc](http://bioconductor.org/shields/years-in-bioc/VaSP.svg) ![platform](http://bioconductor.org/shields/availability/3.12/VaSP.svg) [![Bioconductor-release Build Status](http://bioconductor.org/shields/build/release/bioc/VaSP.svg)](http://bioconductor.org/checkResults/release/bioc-LATEST/VaSP) ![update](http://bioconductor.org/shields/lastcommit/release/bioc/VaSP.svg) 
+[ Release ](http://bioconductor.org/packages/release/bioc/html/VaSP.html) ![in Bioc](http://bioconductor.org/shields/years-in-bioc/VaSP.svg) ![platform](http://bioconductor.org/shields/availability/release/VaSP.svg) [![Bioconductor-release Build Status](http://bioconductor.org/shields/build/release/bioc/VaSP.svg)](http://bioconductor.org/checkResults/release/bioc-LATEST/VaSP) ![update](http://bioconductor.org/shields/lastcommit/release/bioc/VaSP.svg) 
 <!-- badges: end -->
 
 <br>
@@ -148,7 +148,7 @@ The code is freely available under the GPL (>= 2.0) license
 
 Yu, H., Du, Q., Campbell, M., Yu, B., Walia, H. and Zhang, C. (2021), 
 Genome‐wide discovery of natural variation in pre‐mRNA splicing and prioritising
-causal alternative splicing to salt stress response in rice. ***New Phytol***.
+causal alternative splicing to salt stress response in rice. ***New Phytol***. 230: 1273-1287. 
 https://doi.org/10.1111/nph.17189
 <br />
 <br />
