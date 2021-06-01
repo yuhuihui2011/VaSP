@@ -4,7 +4,7 @@
 # VaSP: Quantification and Visualization of Variations of Splicing in Population 
 
 <!-- badges: start -->
-[ Release ](http://bioconductor.org/packages/release/bioc/html/VaSP.html) ![in Bioc](http://bioconductor.org/shields/years-in-bioc/VaSP.svg) ![platform](http://bioconductor.org/shields/availability/3.14/VaSP.svg) [![Bioconductor-release Build Status](http://bioconductor.org/shields/build/release/bioc/VaSP.svg)](http://bioconductor.org/checkResults/release/bioc-LATEST/VaSP) ![update](http://bioconductor.org/shields/lastcommit/release/bioc/VaSP.svg) 
+[ Release ](http://bioconductor.org/packages/release/bioc/html/VaSP.html) ![in Bioc](http://bioconductor.org/shields/years-in-bioc/VaSP.svg) ![platform](http://bioconductor.org/shields/availability/release/VaSP.svg) [![Bioconductor-release Build Status](http://bioconductor.org/shields/build/release/bioc/VaSP.svg)](http://bioconductor.org/checkResults/release/bioc-LATEST/VaSP) ![update](http://bioconductor.org/shields/lastcommit/release/bioc/VaSP.svg) 
 <!-- badges: end -->
 
 <br>
