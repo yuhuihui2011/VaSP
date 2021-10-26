@@ -1,6 +1,6 @@
 Package: VaSP
 Type: Package
-Version: 1.6.0
+Version: 1.7.0
 Title: Quantification and Visualization of Variations of Splicing in Population
 Authors@R: c(person("Huihui", "Yu", role = c("aut", "cre"), 
     email = "yuhuihui2011@foxmail.com", comment = c(ORCID = "0000-0003-2725-1937")),
