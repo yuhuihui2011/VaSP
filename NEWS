@@ -1,5 +1,8 @@
 VaSP News
 
+Changes in version 1.7.2 (2022-01-07)
++ Removed the visualizing function splicePlot due to the dependent package Sushi deprecated.
+
 Changes in version 1.2.5 (2021-02-14)
 + Changed package name to VaSP from vasp.
 

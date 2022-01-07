@@ -16,8 +16,7 @@ getDepth(x, chrom, start, end)
 \item{end}{end position}
 }
 \value{
-a data.frame in bedgraph file format which can be used as input for
-\code{\link[Sushi]{plotBedgraph}} in the \bold{SuShi} package.
+a data.frame in bedgraph file format.
 }
 \description{
 Get read depth from a BAM file (in bedgraph format)
@@ -31,11 +30,8 @@ depth<-getDepth(file.path(path, bam_files[1]), 'Chr1',
                 start=1171800, end=1179400)
 head(depth)
 
-library(Sushi)
-plotBedgraph(depth,'Chr1',chromstart=1171800, chromend=1179400,yaxt='s')
-mtext('Depth',side=2,line=2.5,cex=1.2,font=2)
-labelgenome('Chr1',1171800,1179400,side=1,scipen=20,n=5,scale='Kb')
-}
-\seealso{
-\code{\link{splicePlot}}
+# library(Sushi)
+# plotBedgraph(depth,'Chr1',chromstart=1171800, chromend=1179400,yaxt='s')
+# mtext('Depth',side=2,line=2.5,cex=1.2,font=2)
+# labelgenome('Chr1',1171800,1179400,side=1,scipen=20,n=5,scale='Kb')
 }

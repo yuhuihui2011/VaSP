@@ -6,11 +6,9 @@
 #' @param chrom chromosome of a region to be searched
 #' @param start start position
 #' @param end end position
-#' @return  a data.frame in bedgraph file format which can be used as input for
-#' \code{\link[Sushi]{plotBedgraph}} in the \bold{SuShi} package.
+#' @return  a data.frame in bedgraph file format
 #' @importFrom IRanges IRanges
 #' @export getDepth
-#' @seealso \code{\link{splicePlot}}
 #' @examples
 #' path <- system.file('extdata',package='VaSP')
 #' bam_files<-list.files(path,'bam$')
@@ -20,10 +18,10 @@
 #'                 start=1171800, end=1179400)
 #' head(depth)
 #'
-#' library(Sushi)
-#' plotBedgraph(depth,'Chr1',chromstart=1171800, chromend=1179400,yaxt='s')
-#' mtext('Depth',side=2,line=2.5,cex=1.2,font=2)
-#' labelgenome('Chr1',1171800,1179400,side=1,scipen=20,n=5,scale='Kb')
+#' # library(Sushi)
+#' # plotBedgraph(depth,'Chr1',chromstart=1171800, chromend=1179400,yaxt='s')
+#' # mtext('Depth',side=2,line=2.5,cex=1.2,font=2)
+#' # labelgenome('Chr1',1171800,1179400,side=1,scipen=20,n=5,scale='Kb')
 
 getDepth <- function(x, chrom, start, end) {
     gr <- GRanges(chrom, IRanges(start, end))

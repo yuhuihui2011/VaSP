@@ -27,8 +27,7 @@ rows to select from a matrix of transcript coverages: NA value keeps all
 transcripts.}
 }
 \value{
-a data.frame in bed-like file format that can be used as input for
-\code{\link[Sushi]{plotGenes}} in the \bold{SuShi} package
+a data.frame in bed-like file format
 }
 \description{
 Get gene informaton from a ballgown object by genes or by genomic regions
@@ -42,18 +41,14 @@ geneinfo <- getGeneinfo(genes=gene_id,rice.bg)
 trans <- table(geneinfo$name) # show how many exons each transcript has
 trans
 
-library(Sushi)
-chrom = geneinfo$chrom[1]
-chromstart = min(geneinfo$start) - 1e3
-chromend = max(geneinfo$stop) + 1e3
-color = rep(SushiColors(2)(length(trans)), trans)
+# library(Sushi)
+# chrom = geneinfo$chrom[1]
+# chromstart = min(geneinfo$start) - 1e3
+# chromend = max(geneinfo$stop) + 1e3
+# color = rep(SushiColors(2)(length(trans)), trans)
 
-par(mar=c(3,1,1,1))
-plotGenes(geneinfo, chrom, chromstart, chromend, col = color, bheight = 0.2,
-            bentline = FALSE, plotgenetype = 'arrow', labeloffset = 0.5)
-labelgenome(chrom, chromstart , chromend, side = 1, n = 5, scale = 'Kb')
-}
-\seealso{
-\code{\link{splicePlot}}; \code{\link[Sushi]{plotGenes}} in
-\bold{Sushi} package
+# par(mar=c(3,1,1,1))
+# plotGenes(geneinfo, chrom, chromstart, chromend, col = color, bheight = 0.2,
+#           bentline = FALSE, plotgenetype = 'arrow', labeloffset = 0.5)
+# labelgenome(chrom, chromstart , chromend, side = 1, n = 5, scale = 'Kb')
 }
