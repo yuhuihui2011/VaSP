@@ -25,7 +25,9 @@ knitr::opts_chunk$set(
 
 **VaSP** is an R package for discovery of genome-wide variable alternative 
 splicing events from short-read RNA-seq data and visualizations of gene 
-splicing information for publication-quality multi-panel figures.
+splicing information for publication-quality multi-panel figures. (Warning: The 
+visualizing function is removed due to the dependent package Sushi deprecated. 
+If you want to use it, please change back to an older version.)
 
 ```{r echo=FALSE, out.width=700}
 knitr::include_graphics('../README_files/VaSP.png')
@@ -40,7 +42,8 @@ collecting expression information with R package
 Single Splicing Strength (3S) scores for all splicing junctions in the 
 genome (`?spliceGenome`) or in a particular gene (`?spliceGene`), identifies 
 genotype-specific splicing (GSS) events (`?BMfinder`), and displays 
-differential splicing information (`?splicePlot`). The 3S scores can be also 
+differential splicing information (`?splicePlot`. This function is removed). 
+The 3S scores can be also 
 used for other analyses, such as differential splicing analysis or splicing QTL 
 identification. **(B)**. VaSP estimates 3S scores based on junction-read counts 
 normalized by gene-level read coverage. In this example, VaSP calculates the 
@@ -123,10 +126,10 @@ gss_intron<-structure(rice.bg)$intron
 (gss_intron<-gss_intron[gss_intron$id%in%rownames(gss)])
 range(gss_intron)
 ```
-* Showing the splicing information
-```{r splicePlot, fig.width=7, fig.height=4}
+* Showing the splicing information (deprecated)
+```{r splicePlot, fig.width=7, fig.height=4, eval=FALSE}
 splicePlot(rice.bg,gene='MSTRG.183',samples = sampleNames(rice.bg)[c(1,3,5)],
-    start = 1179000, end = 1179300)
+     start = 1179000, end = 1179300)
 ```
 
 ## 6. Functions
@@ -137,7 +140,7 @@ Currently, there are 6 functions in VaSP:
 ***spliceGenome***: Calculate genome-wide splicing scores  
 ***BMfinder***: Discover bimodal distrubition features  
 ***splicePlot***: Visualization of read coverage, splicing information and 
-gene information in a gene region
+gene information in a gene region (deprecated)
 
 ### 6.1 getDepth
 Get read depth from a BAM file (in bedgraph format) and return a data.frame in 
@@ -152,11 +155,11 @@ depth <- getDepth(file.path(path, bam_files[1]), "Chr1", start = 1171800,
                 end = 1179400)
 head(depth)
 
-library(Sushi)
-par(mar=c(3,5,1,1))
-plotBedgraph(depth, "Chr1", chromstart = 1171800, chromend = 1179400,yaxt = "s")
-mtext("Depth", side = 2, line = 2.5, cex = 1.2, font = 2)
-labelgenome("Chr1", 1171800, 1179400, side = 1, scipen = 20, n = 5,scale = "Kb")
+# library(Sushi)
+# par(mar=c(3,5,1,1))
+# plotBedgraph(depth, "Chr1", chromstart = 1171800, chromend = 1179400,yaxt = "s")
+# mtext("Depth", side = 2, line = 2.5, cex = 1.2, font = 2)
+# labelgenome("Chr1", 1171800, 1179400, side = 1, scipen = 20, n = 5,scale = "Kb")
 ```
 
 ### 6.2 getGeneinfo
@@ -171,15 +174,15 @@ geneinfo <- getGeneinfo(genes = gene_id, rice.bg)
 trans <- table(geneinfo$name)  # show how many exons each transcript has
 trans
 
-chrom = geneinfo$chrom[1]
-chromstart = min(geneinfo$start) - 1500
-chromend = max(geneinfo$stop) + 1000
-color = rep(SushiColors(2)(length(trans)), trans)
+# chrom = geneinfo$chrom[1]
+# chromstart = min(geneinfo$start) - 1500
+# chromend = max(geneinfo$stop) + 1000
+# color = rep(SushiColors(2)(length(trans)), trans)
 
-par(mar=c(3,1,1,1))
-p<-plotGenes(geneinfo, chrom, chromstart, chromend, col = color, bheight = 0.2, 
-            bentline = FALSE, plotgenetype = "arrow", labeloffset = 0.5)
-labelgenome(chrom, chromstart , chromend, side = 1, n = 5, scale = "Kb")
+# par(mar=c(3,1,1,1))
+# p<-plotGenes(geneinfo, chrom, chromstart, chromend, col = color, bheight = 0.2, 
+#            bentline = FALSE, plotgenetype = "arrow", labeloffset = 0.5)
+# labelgenome(chrom, chromstart , chromend, side = 1, n = 5, scale = "Kb")
 ```
 
 ### 6.3 spliceGene
@@ -232,8 +235,8 @@ score[rownames(score) %in% rownames(as), ]
 ### 6.6 splicePlot
 Visualization of read coverage, splicing information and gene information in a 
 gene region. This function is a wrapper of `getDepth`, `getGeneinfo`, 
-`spliceGene`, `plotBedgraph` and `plotGenes`.
-```{r, fig.width=7, fig.height=4}
+`spliceGene`, `plotBedgraph` and `plotGenes`. (This function is deprecated)
+```{r, fig.width=7, fig.height=4, eval=FALSE}
 samples <- paste("Sample", c("027", "102", "237"), sep = "_")
 bam.dir <- system.file("extdata", package = "VaSP")
 
@@ -253,13 +256,13 @@ And by default (`junc.type = 'score'`, `junc.text = TRUE`), the junctions
 argument `junc.text = FALSE` to unlabel the junctions or change the argument 
 `junc.type = 'count'` to label with junction read counts.
 
-```{r, fig.width=7, fig.height=4}
+```{r, fig.width=7, fig.height=4, eval=FALSE}
 splicePlot(rice.bg, samples, bam.dir, gene = "MSTRG.183", junc.type = 'count', 
             start = 1179000)
 ```
 
 There are other more options to modify the plot, please see the function 
-`?splicePlot` for details.
+`?splicePlot` for details (deprecated).
 
 
 ## 7. Session Information
